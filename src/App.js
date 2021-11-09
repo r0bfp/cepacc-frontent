@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import Routes from "./routes";
+import "antd/dist/antd.css";
+
+import { GlobalStyle } from "./globaStyle";
+import { HeaderContainer, BodyContainer } from "./style"
+
+import Header from "./components/Header";
+import FaleConosco from "./components/FaleConosco";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <GlobalStyle/>
+            <HeaderContainer>
+                <Header />
+            </HeaderContainer>
+            <BodyContainer>
+                <Routes />
+                <FaleConosco/>
+            </BodyContainer>
+        </BrowserRouter>
+    );
 }
 
 export default App;
