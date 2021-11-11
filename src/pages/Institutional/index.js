@@ -5,7 +5,7 @@ import { Typography } from "antd";
 
 const { Title, Paragraph } = Typography;
 
-export default function Institucional(){
+export default function Institutional(){
     return (
         <MainContainer>
             <Typography>

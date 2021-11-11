@@ -8,6 +8,6 @@ export const HeaderContainer = styled.div`
 export const BodyContainer = styled.div`
     width: 100%;
     height: 100%;
-    padding: 40px;
-    padding-top: 80px;
+    /* padding-top: 80px; */
+    background-color: #F5F6FC;
 `;

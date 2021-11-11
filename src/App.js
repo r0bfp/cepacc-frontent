@@ -2,12 +2,13 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import Routes from "./routes";
 import "antd/dist/antd.css";
+import "./App.less";
 
 import { GlobalStyle } from "./globaStyle";
 import { HeaderContainer, BodyContainer } from "./style"
 
 import Header from "./components/Header";
-import FaleConosco from "./components/FaleConosco";
+import ContactUs from "./components/ContactUs";
 
 function App() {
     return (
@@ -18,7 +19,7 @@ function App() {
             </HeaderContainer>
             <BodyContainer>
                 <Routes />
-                <FaleConosco/>
+                <ContactUs/>
             </BodyContainer>
         </BrowserRouter>
     );

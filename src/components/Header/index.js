@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Menu, Button } from "antd";
-import { HomeTwoTone, BankTwoTone, BookTwoTone } from "@ant-design/icons";
+import { HomeOutlined, BankOutlined, BookOutlined, UserOutlined } from "@ant-design/icons";
 
 import { LogoContainer, MenuContainer, MainContainer, ButtonContainer } from "./style";
 
@@ -13,16 +13,21 @@ export default function Header() {
             </LogoContainer>
             <MenuContainer>
                 <Menu mode="horizontal" style={{ display: "flex", justifyContent: "right" }}>
-                    <Menu.Item key="inicio" icon={<HomeTwoTone />}>
+                    <Menu.Item key="inicio" icon={<HomeOutlined />}>
                         <Link to='/'/>
                         Inicio
                     </Menu.Item>
-                    <Menu.Item key="institucional" icon={<BankTwoTone />}>
+                    <Menu.Item key="institucional" icon={<BankOutlined />}>
                         <Link to='/institucional'/>
                         Institucional
                     </Menu.Item>
-                    <Menu.Item key="cursos" icon={<BookTwoTone />}>
+                    <Menu.Item key="cursos" icon={<BookOutlined />}>
+                        <Link to='/cursos'/>
                         Cursos
+                    </Menu.Item>
+                    <Menu.Item key="area-do-aluno" icon={<UserOutlined />}>
+                        <Link to='/login'/>
+                        Área do Aluno
                     </Menu.Item>
                 </Menu>
             </MenuContainer>
