@@ -1,12 +1,13 @@
 import React from "react";
 
 import { MainContainer } from "./style";
-import { Typography } from "antd";
-
-const { Title, Paragraph } = Typography;
+import CoursesComponent from "../../components/Courses";
 
 export default function Courses(){
     return (
-        <h1>Cursos</h1>
+        <MainContainer>
+            <CoursesComponent courseType='Pós-Graduação'/>
+            <CoursesComponent courseType='Curso de Extensão'/>
+        </MainContainer>
     )
 }
