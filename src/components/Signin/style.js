@@ -26,6 +26,11 @@ export const InputContainer = styled.div`
     width: 100%;
     margin-bottom: 10px;
     font-size: 16px;
+
+    input{
+        background-color: rgb(232, 240, 254);
+        border-radius: 5px;
+    }
 `;
 
 export const Title = styled.h1`
