@@ -11,8 +11,8 @@ export default function MainRoutes(){
         <Routes>
             <Route path='/'>
                 <Route index element={<Home/>}/>
-                <Route path='/Institutional' element={<Institutional/>}/>
-                <Route path='/Courses' element={<Courses/>}/>
+                <Route path='/institucional' element={<Institutional/>}/>
+                <Route path='/cursos' element={<Courses/>}/>
                 <Route path='/login' element={<Login/>}/>
             </Route>
         </Routes>
