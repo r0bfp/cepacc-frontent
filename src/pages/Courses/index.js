@@ -1,7 +1,7 @@
 import React from "react";
 
 import { MainContainer } from "./style";
-import CoursesComponent from "../../components/Courses";
+import CoursesComponent from "../../components/CoursesComponents/Courses";
 
 export default function Courses(){
     return (

@@ -7,8 +7,8 @@ import "./App.less";
 import { GlobalStyle } from "./globaStyle";
 import { HeaderContainer, BodyContainer } from "./style"
 
-import Header from "./components/Header";
-import ContactUs from "./components/ContactUs";
+import Header from "./components/GlobalComponents/Header";
+import ContactUs from "./components/GlobalComponents/ContactUs";
 
 function App() {
     return (

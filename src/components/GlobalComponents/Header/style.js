@@ -4,10 +4,11 @@ export const MainContainer = styled.div`
     width: 100%;
     height: 46px;
     background-color: #FFFF;
-    
+
     position: fixed;
     top: 0;
-    `;
+    z-index: 999;
+`;
 
 export const MainContent = styled.div`
     display: flex;

@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Select } from "antd";
+import { Select } from "antd";
 
 import { MainContainer, MainContent } from "./style";
 

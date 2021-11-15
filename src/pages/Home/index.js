@@ -1,8 +1,7 @@
 import React from "react";
 
 import { MainContainer, Section } from "./style";
-import Carousel from "../../components/Carousel";
-import FindYourCourse from "../../components/FindYourCourse";
+import Carousel from "../../components/HomeComponents/Carousel";
 
 export default function Home(){
     return (
