@@ -19,23 +19,23 @@ function ModalEdit(props) {
         'Cursos de Extensão',
         'Reforço Escolar',
         'Cursos Preparatórios',
-    ]
+    ];
 
     const coursesAreasMock = [
         'Saúde',
         'Negócios',
         'Educação',
-    ]
+    ];
 
     const coursesModalitiesMock = [
         'EAD',
         'Presencial',
         'Semipresencial',
-    ]
+    ];
 
     return (
         <MainContainer>
-            <Form layout="horizontal" labelCol={{ span: 4 }}>
+            <Form layout="horizontal" labelCol={{ span: 5 }}>
                 <Form.Item label='Nome'>
                     <Input defaultValue={courseName}/>
                 </Form.Item>
@@ -92,4 +92,12 @@ function ModalEdit(props) {
     )
 }
 
-export { ModalEdit };
+function ModalRemove(props) {
+    return (
+        <MainContainer>
+            Tem certeza que deseja remover o curso <strong>{props.courseName}</strong>?
+        </MainContainer>
+    )
+}
+
+export { ModalEdit, ModalRemove };
