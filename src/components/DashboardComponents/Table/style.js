@@ -39,3 +39,7 @@ export const DropdownButtonContainer = styled.div`
         margin-left: 5px;
     }
 `;
+
+export const ModalRemoveContainer = styled.div`
+
+`;
