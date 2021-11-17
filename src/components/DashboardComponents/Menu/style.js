@@ -76,6 +76,7 @@ export const Exit = styled.a`
     color: red;
     text-decoration: none;
     cursor: pointer;
+    width: fit-content;
 
     :hover{
         color: red;
