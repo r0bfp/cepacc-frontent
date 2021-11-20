@@ -1,16 +1,26 @@
 import React, { useState } from "react";
-import { Table, Tag, Dropdown, Menu, Modal } from 'antd';
+import { Table, Tag, Dropdown, Menu, Button } from 'antd';
 import { HiOutlineDotsVertical } from 'react-icons/hi';
 import { BiEdit, BiTrash } from "react-icons/bi";
+import { PlusOutlined } from "@ant-design/icons";
 
-import { ModalEdit, ModalRemove } from "./Modals";
-import AddRow from "./AddRow";
-import { Title, MainContainer, ActionButton, DropdownButtonContainer } from "./style";
+import ModalAddCourse from "./Modals/AddCourse";
+import ModalRemoveCourse from "./Modals/RemoveCouse";
+import ModalEditCourse from "./Modals/EditCourse";
+import { Title, MainContainer, ActionButton, DropdownButtonContainer, ConfirmContainer } from "./style";
 import { AppColors } from "../../../globaStyle";
 
 
-export default function ManageCourses(props) {
-    const [ editModalVisible, setEditModalVisible ] = useState(false);
+export default function ManageCourses({
+        tableData,
+        tableTitle,
+        handleAddNewCourse,
+        handleRemoveCourse,
+        handleEditCourse
+    }) {
+    const [ editCourseModalVisible, setEditCourseModalVisible ] = useState(false);
+    const [ removeCourseModalVisible, setRemoveCourseModalVisible ] = useState(false);
+    const [ addCourseModalVisible, setAddCourseModalVisible ] = useState(false);
     const [ selectedRow, setSelectedRow ] = useState({
         key: '',
         courseName: '',
@@ -19,9 +29,6 @@ export default function ManageCourses(props) {
         courseArea: '',
         courseModality: '',
     });
-
-    const tableData = props.tableData;
-    const tableTitle = props.tableTitle;
 
     function handleRowClick(element) {
         const row = element.currentTarget.parentNode.parentNode;
@@ -36,27 +43,16 @@ export default function ManageCourses(props) {
         });
     }
 
-    function handleEditOk() {
-        setEditModalVisible(false);
-    }
-
-    const onRemoveModal = {
-        title: 'Atenção!',
-        content: (<ModalRemove courseName={selectedRow.courseName}/>),
-        okText: "REMOVER",
-        okButtonProps: { danger: true },
-        cancelText: "Cancelar"
-    };
 
     const dropdownMenu = (
         <Menu>
-            <Menu.Item key="0" onClick={() => setEditModalVisible(true)}>
+            <Menu.Item key="0" onClick={() => setEditCourseModalVisible(prev => !prev)}>
                 <DropdownButtonContainer>
                     <BiEdit color={AppColors.primaryText}/>
                     <span style={{ color: AppColors.primaryText }}>Editar</span>
                 </DropdownButtonContainer>
             </Menu.Item>
-            <Menu.Item danger key="1" onClick={() => Modal.confirm(onRemoveModal)}>
+            <Menu.Item danger key="1" onClick={() => setRemoveCourseModalVisible(prev => !prev)}>
                 <DropdownButtonContainer>
                     <BiTrash/>
                     <span>Remover</span>
@@ -67,31 +63,46 @@ export default function ManageCourses(props) {
 
     return (
         <MainContainer>
-            <Modal
-                title={selectedRow.courseName}
-                visible={editModalVisible}
-                onOk={() => handleEditOk()}
-                onCancel={() => setEditModalVisible(false)}
-            >
-                <ModalEdit selectedCourse={selectedRow}/>
-            </Modal>
+            <ModalEditCourse 
+                visible={editCourseModalVisible} 
+                setVisible={setEditCourseModalVisible} 
+                handleEditCourse={handleEditCourse}
+                selectedRow={selectedRow}
+            />
+            <ModalRemoveCourse 
+                visible={removeCourseModalVisible} 
+                setVisible={setRemoveCourseModalVisible} 
+                selectedRow={selectedRow} 
+                handleRemoveCourse={handleRemoveCourse}
+            />
+            <ModalAddCourse 
+                visible={addCourseModalVisible} 
+                setVisible={setAddCourseModalVisible} 
+                handleAddNewCourse={handleAddNewCourse}
+            />
             <Title>{tableTitle}</Title>
             <Table 
                 dataSource={tableData} 
                 pagination={false} 
                 bordered={true}
             >
-                <Table.Column title="Nome" dataIndex="name" key="name" align='center'/>
-                <Table.Column title="Duração" dataIndex="duration" key="duration" align='center'/>
+                <Table.Column title="Nome" dataIndex="courseName" key="name" align='center'/>
+                <Table.Column 
+                    title="Duração"
+                    dataIndex="courseDuration"
+                    key="duration"
+                    align='center'
+                    render={(text) => (<span>{text} Horas</span>)}
+                />
                 <Table.Column
                     title="Tipo"
-                    dataIndex="type"
+                    dataIndex="courseType"
                     key="type"
                     align='center'
                     render={(type) => <Tag color={AppColors.coursesColors[type]}
                 >{type}</Tag>}/>
-                <Table.Column title="Área" dataIndex="area" key="area" align='center'/>
-                <Table.Column title="Modalidade" dataIndex="modality" key="modality" align='center'/>
+                <Table.Column title="Área" dataIndex="courseArea" key="area" align='center'/>
+                <Table.Column title="Modalidade" dataIndex="courseModality" key="modality" align='center'/>
                 <Table.Column
                     title="Ação"
                     dataIndex="action"
@@ -106,7 +117,9 @@ export default function ManageCourses(props) {
                     )}
                 />
             </Table>
-            <AddRow/>
+            <ConfirmContainer>
+                <Button onClick={() => setAddCourseModalVisible(true)} type="primary" size='large' shape="circle" icon={<PlusOutlined />} />
+            </ConfirmContainer>
         </MainContainer>
     )
 }

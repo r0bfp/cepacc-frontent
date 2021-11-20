@@ -17,7 +17,7 @@ export const GlobalStyle = createGlobalStyle`
 export const AppColors = {
     primary: '#1A4E87',
     primaryText: '#093366',
-    secundaryText: 'rgb(204, 160, 51)',
+    secondary: 'rgb(204, 160, 51)',
     coursesColors: {
         '2° Licenciatura': '#ef476f',
         'Pós-Graduação': '#48cae4',

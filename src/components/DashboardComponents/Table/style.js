@@ -4,10 +4,14 @@ import { AppColors } from "../../../globaStyle";
 
 export const MainContainer = styled.div`
     width: 100%;
-    height: 100%;
 
     td {
         color: ${AppColors.primaryText};
+    }
+
+    thead > tr > th {
+        background-color: ${AppColors.primary};
+        color: #FFF;
     }
 `;
 
@@ -40,6 +44,10 @@ export const DropdownButtonContainer = styled.div`
     }
 `;
 
-export const ModalRemoveContainer = styled.div`
-
+export const ConfirmContainer = styled.div`
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: end;
 `;
+
