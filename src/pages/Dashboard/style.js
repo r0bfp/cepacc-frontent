@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const MainContainer = styled.div`
     width: 100%;
-    height: 100%;
+    height: 85%;
     padding: 20px 40px;
 `;
 
@@ -15,4 +15,10 @@ export const Main = styled.div`
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
+    overflow: hidden;
+`;
+
+export const ContentContainer = styled.div`
+    width: 100%;
+    height: 100%;
 `;
