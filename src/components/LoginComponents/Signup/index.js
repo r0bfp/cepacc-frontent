@@ -54,7 +54,7 @@ export default function Signup() {
             </SubTitleContainer>
             <CoursesContainer>
                 {
-                    coursesColors.map(e => {
+                    coursesColors.map((e) => {
                         return (
                             <CourseContainer color={e.color}>
                                 <CourseTypeTitle>{e.courseType}</CourseTypeTitle>
