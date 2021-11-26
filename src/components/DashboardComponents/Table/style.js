@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { AppColors } from "../../../globaStyle";
+import { AppColors } from "../../../globalStyle";
 
 
 export const MainContainer = styled.div`

@@ -8,7 +8,7 @@ import ModalAddCourse from "./Modals/AddCourse";
 import ModalRemoveCourse from "./Modals/RemoveCouse";
 import ModalEditCourse from "./Modals/EditCourse";
 import { Title, MainContainer, ActionButton, DropdownButtonContainer, ConfirmContainer } from "./style";
-import { AppColors } from "../../../globaStyle";
+import { AppColors } from "../../../globalStyle";
 
 
 export default function ManageCourses({

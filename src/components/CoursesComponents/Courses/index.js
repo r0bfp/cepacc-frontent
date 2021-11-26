@@ -44,14 +44,14 @@ export default function Courses(props) {
                 <ListTitle>{props.courseType}</ListTitle>
                 <CoursesListContainer>
                     {
-                        apiCourseMock.map(course => {
+                        apiCourseMock.map((course, index) => {
                             return (
-                                <Course courseType={props.courseType}>
+                                <Course key={index} courseType={props.courseType}>
                                     <CourseTitle>{course.nome}</CourseTitle>
                                     {
                                         course.tbl_modalidade.map((modality, index) => {
                                             return (
-                                                <CourseModalities> {index !== 0 && "/"} {modality}</CourseModalities>
+                                                <CourseModalities key={index}> {index !== 0 && "/"} {modality}</CourseModalities>
                                             )
                                         })
                                     }
