@@ -4,7 +4,7 @@ import Routes from "./routes";
 import "antd/dist/antd.css";
 import "./App.less";
 
-import { GlobalStyle } from "./globaStyle";
+import { GlobalStyle } from "./globalStyle";
 import { HeaderContainer, BodyContainer } from "./style"
 
 import Header from "./components/GlobalComponents/Header";
