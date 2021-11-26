@@ -1,59 +1,49 @@
 import React, { useState } from "react";
-import { AiOutlineUser } from "react-icons/ai";
+import { HamburgerSqueeze } from 'react-animated-burgers'
 
+import { AppColors } from "../../../globalStyle";
 import { 
-    MenuNavigation,
-    Exit,
     MainContainer,
-    MenuHeader,
-    UserContainer,
-    UserDescriptionContainer,
-    UserImageContainer,
-    Username,
-    MenuItem,
-    MenuItemText
+    HeaderContainer,
+    ButtonContainer,
+    TextContainer,
+    Text,
+    IconContainer,
+    MenuButtonContainer,
 } from "./style";
 
 
-export default function Menu(props) {
-    const [ menuItemSelected, setMenuItemSelected ] = useState();
-    const menuItems = props.menuItems;
+export default function Menu({tabs, handleSelectedTab}) {
+    const [ isOpen, setIsOpen ] = useState(true);
 
-    function handleSelected(element) {
-        const currentKey = element.target.innerText;
-
-        setMenuItemSelected(currentKey);
-    }
-
-    function handleClick(element) {
-        handleSelected(element)
-        props.handleDashboards(element.target.innerText);
+    function handleIsOpen() {
+        setIsOpen(prev => !prev);
     }
 
     return (
-        <MainContainer>
-            <MenuHeader>
-                <UserContainer>
-                    <UserImageContainer>
-                        <AiOutlineUser size={35} color='#093366'/>
-                    </UserImageContainer>
-                    <UserDescriptionContainer>
-                        <Username>Usuário Teste</Username>
-                        <Exit>Sair</Exit>
-                    </UserDescriptionContainer>
-                </UserContainer>
-            </MenuHeader>
-            <MenuNavigation>
-                {
-                    Object.keys(menuItems).map((menuItem, index) => {
-                        return (
-                            <MenuItem key={index} onClick={(element) => handleClick(element)} selected={menuItemSelected === menuItems[menuItem].key}>
-                                <MenuItemText>{menuItems[menuItem].key}</MenuItemText>
-                            </MenuItem>
-                        )
-                    })
-                }
-            </MenuNavigation>
+        <MainContainer isOpen={isOpen}>
+            <HeaderContainer>
+                <MenuButtonContainer>
+                    <HamburgerSqueeze
+                        buttonWidth={30}
+                        isActive={isOpen}
+                        toggleButton={() => handleIsOpen()}
+                        barColor={AppColors.primaryText}
+                    />
+                </MenuButtonContainer>
+            </HeaderContainer>
+            {
+                tabs.map((e, i) => (
+                    <ButtonContainer key={i} onClick={() => handleSelectedTab(e.key)} selected={e.selected}>
+                        <IconContainer>
+                            <e.icon/>
+                        </IconContainer>
+                        <TextContainer>
+                            <Text>{e.tabName}</Text>
+                        </TextContainer>
+                    </ButtonContainer>
+                ))
+            }
         </MainContainer>
     )
 }
