@@ -11,11 +11,12 @@ export const GlobalStyle = createGlobalStyle`
     html, body, #root{
         height: 100%;
         width: 100%;
+        background-color: #F5F6FC;
     }
 `;
 
 export const AppColors = {
-    primary: '#1A4E87',
+    primary: 'rgb(1, 70, 140)',
     primaryText: '#093366',
     secondary: 'rgb(204, 160, 51)',
     coursesColors: {
