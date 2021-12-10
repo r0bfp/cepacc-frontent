@@ -2,6 +2,8 @@ import React from "react";
 import { Carousel as AntdCarousel, Typography} from "antd";
 
 import { MainContainer, CarouselImageContainer, MessageContainer, CarouselContainer } from "./style";
+import banner from "../../../assets/carousel/banner teste1.png";
+import banner2 from "../../../assets/carousel/banner teste2.png";
 
 export default function Carousel() {
     return (
@@ -9,28 +11,10 @@ export default function Carousel() {
             <CarouselContainer>
                 <AntdCarousel autoplay>
                     <CarouselImageContainer>
-                        <MessageContainer>
-                            <Typography.Title>Titulo 1</Typography.Title>
-                            <Typography.Paragraph>Mensagem 1</Typography.Paragraph>
-                        </MessageContainer>
+                        <img src={banner}/>
                     </CarouselImageContainer>
                     <CarouselImageContainer>
-                        <MessageContainer>
-                            <Typography.Title>Titulo 2</Typography.Title>
-                            <Typography.Paragraph>Mensagem 2</Typography.Paragraph>
-                        </MessageContainer>
-                    </CarouselImageContainer>
-                    <CarouselImageContainer>
-                        <MessageContainer>
-                            <Typography.Title>Titulo 3</Typography.Title>
-                            <Typography.Paragraph>Mensagem 3</Typography.Paragraph>
-                        </MessageContainer>
-                    </CarouselImageContainer>
-                    <CarouselImageContainer>
-                        <MessageContainer>
-                            <Typography.Title>Titulo 4</Typography.Title>
-                            <Typography.Paragraph>Mensagem 4</Typography.Paragraph>
-                        </MessageContainer>
+                        <img src={banner2}/>
                     </CarouselImageContainer>
                 </AntdCarousel>
             </CarouselContainer>

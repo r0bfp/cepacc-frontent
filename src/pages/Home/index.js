@@ -1,7 +1,9 @@
 import React from "react";
 
 import { MainContainer, Section } from "./style";
-import Carousel from "../../components/HomeComponents/Carousel";
+import Carousel   from "../../components/HomeComponents/Carousel";
+import OurCourses from "../../components/HomeComponents/OurCourses";
+import WhyUs      from "../../components/HomeComponents/WhyUs";
 
 export default function Home(){
     return (
@@ -10,7 +12,13 @@ export default function Home(){
                 <Carousel/>
             </Section>
             <Section>
-                {/* <FindYourCourse/> */}
+                <OurCourses/>
+            </Section>
+            <Section>
+                <WhyUs/>
+            </Section>
+            <Section>
+                <div style={{height: '500px'}}></div>
             </Section>
         </MainContainer>
     )
