@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "antd";
 import { HomeOutlined, BankOutlined, BookOutlined, UserOutlined } from "@ant-design/icons";
@@ -10,7 +10,6 @@ import {
     MainContent,
     MenuItem,
     Text,
-    IconContainer,
     TextContainer,
     EmphasisButtonContainer
 } from "./style";
@@ -18,6 +17,7 @@ import logo from "../../../assets/logo.png";
 
 
 export default function Header() {
+    const [ onTop, setOnTop] = useState(true);
     const [ tabs, setTabs ] = useState([
         {
             title: 'Início',
@@ -43,11 +43,14 @@ export default function Header() {
             link: '/area-do-aluno/login',
             selected: false
         },
-    ])
+    ]);
 
-    const currentLocation = window.location.href;
-    const fullHostname = currentLocation.split('/').slice(0, 3).join('/');
-    const currentRoute = currentLocation.replace(fullHostname, '');
+    useEffect(() => {
+        window.onscroll = () => {
+            window.pageYOffset === 0 ? setOnTop(true) : setOnTop(false);
+        }
+    }, []);
+
 
     function handleTabSelected(tabTitle) {
         setTabs(prev => prev.map(e => {
@@ -56,7 +59,7 @@ export default function Header() {
     }
 
     return (
-        <MainContainer>
+        <MainContainer onTop={onTop}>
             <MainContent>
                 <LogoContainer>
                     <img src={logo} alt='logo'/>
@@ -65,11 +68,8 @@ export default function Header() {
                     {
                         tabs.map((e, i) => {
                             return (
-                                <Link to={e.link}>
+                                <Link to={e.link} key={i}>
                                     <MenuItem key={i} selected={e.selected} onClick={() => handleTabSelected(e.title)}>
-                                        <IconContainer>
-                                            {e.icon}
-                                        </IconContainer>
                                         <TextContainer>
                                             <Text>{e.title}</Text>
                                         </TextContainer>
@@ -81,7 +81,9 @@ export default function Header() {
                 </Menu>
                 <EmphasisButtonContainer>
                     <Link to='/matricule-se'>
-                        <Button type="primary" shape="round" size='large'>Matricule-se!</Button>
+                        <Button type="primary" shape="round">
+                            <span>MATRICULE-SE!</span>
+                        </Button>
                     </Link>
                 </EmphasisButtonContainer>
             </MainContent>

@@ -3,18 +3,18 @@ import { AppColors } from "../../../globalStyle";
 
 export const MainContainer = styled.div`
     width: 100%;
-    height: 70px;
+    height: 100px;
     background-color: #FFFF;
-    border-bottom: 1px solid #f0f0f0;
 
     position: fixed;
     top: 0;
     z-index: 999;
+    box-shadow: ${props => props.onTop ? '' : ' 0 10px 15px rgb(25 25 25 / 10%)'};
 `;
 
 export const MainContent = styled.div`
     height: 100%;
-    max-width: 1200px;
+    max-width: 1500px;
 
     display: flex;
     flex-direction: row;
@@ -40,7 +40,7 @@ export const Menu = styled.ul`
 
     width: 100%;
     height: 100%;
-    display: flex;
+    display: flex;;
     justify-content: end;
 `;
 
@@ -57,8 +57,8 @@ export const MenuItem = styled.li`
     cursor: pointer;
     position: relative;
     transition: 200ms cubic-bezier(.645,.045,.355,1);
-    color: ${props => props.selected ? '#096FB5' : '#000000d9'};
-
+    /* color: ${props => props.selected ? '#096FB5' : '#000000d9'}; */
+/* 
     &::after{
         content: '';
         width: 100%;
@@ -71,12 +71,15 @@ export const MenuItem = styled.li`
         ${props => props.selected && MenuItemAfter};
     }
     
-    &:hover{
-        color: #096FB5;
-    }
-
+    
     &:hover::after{
         ${MenuItemAfter}
+    } */
+
+    &:hover{
+        span{
+            color: rgb(1, 70, 140);
+        }
     }
 `;
 
@@ -91,11 +94,12 @@ export const TextContainer = styled.div`
     height: 100%;
     display: flex;
     align-items: center;
-    padding: 0 10px 0 5px;
+    padding: 0 10px;
 `;
 
 export const Text = styled.span`
-
+    font-weight: 700;
+    color: #2B2B2B;
 `;
 
 export const EmphasisButtonContainer = styled.div`
@@ -103,6 +107,17 @@ export const EmphasisButtonContainer = styled.div`
     justify-content: center;
     align-items: center;
     margin-left: 15px;
+
+    button{
+        width: 180px;
+        height: 60px;
+
+        span{
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: .5px;
+        }
+    }
 `;
 
 
