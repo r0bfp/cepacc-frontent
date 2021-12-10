@@ -1,16 +1,16 @@
 import React from "react";
 import { Steps } from "antd";
-import { UserOutlined } from '@ant-design/icons';
 
 import { MainContainer } from "./style";
 
 
-export default function Signin() {
+export default function Signin({currentStepIndex}) {
     return (
         <MainContainer>
-            <Steps current={0}>
+            <Steps current={currentStepIndex}>
+                <Steps.Step title="Dados de Acesso"/>
+                <Steps.Step title="Curso"/>
                 <Steps.Step title="Dados Pessoais" />
-                <Steps.Step title="Dados de Login"/>
                 <Steps.Step title="Endereço" />
                 <Steps.Step title="Resumo" />
             </Steps>
