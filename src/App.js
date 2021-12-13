@@ -9,6 +9,7 @@ import { BodyContainer } from "./style"
 
 import Header from "./components/GlobalComponents/Header";
 import ContactUs from "./components/GlobalComponents/ContactUs";
+import Footer from "./components/GlobalComponents/Footer";
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                 <Routes />
                 <ContactUs/>
             </BodyContainer>
+            <Footer/>
         </BrowserRouter>
     );
 }
