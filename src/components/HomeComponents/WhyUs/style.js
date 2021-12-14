@@ -43,22 +43,23 @@ export const MainContent = styled.div`
 
 export const Title = styled.h1`
     font-size: 36px;
-    font-weight: 700;
+    font-weight: 800;
     color: #01468C;
     text-align: center;
 `;
 
 export const Differentials = styled.div`
     height: 100%;
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    column-gap: 30px;
 `;
 
 export const DifferentialContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 0 10px;
 `;
 
 export const DifferentialTitle = styled.span`
@@ -67,6 +68,7 @@ export const DifferentialTitle = styled.span`
     letter-spacing: -1px;
     font-weight: 900;
     color: #FC862D;
+    text-align: center;
 `;
 
 export const DifferentialSubTitle = styled.span`

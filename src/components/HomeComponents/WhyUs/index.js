@@ -24,16 +24,12 @@ export default function WhyUs() {
                         <DifferentialSubTitle>Cursos</DifferentialSubTitle>
                     </DifferentialContainer>
                     <DifferentialContainer>
-                        <DifferentialTitle>+ de 80</DifferentialTitle>
-                        <DifferentialSubTitle>Cursos</DifferentialSubTitle>
+                        <DifferentialTitle>+ de 200</DifferentialTitle>
+                        <DifferentialSubTitle>Alunos</DifferentialSubTitle>
                     </DifferentialContainer>
                     <DifferentialContainer>
-                        <DifferentialTitle>+ de 80</DifferentialTitle>
-                        <DifferentialSubTitle>Cursos</DifferentialSubTitle>
-                    </DifferentialContainer>
-                    <DifferentialContainer>
-                        <DifferentialTitle>+ de 80</DifferentialTitle>
-                        <DifferentialSubTitle>Cursos</DifferentialSubTitle>
+                        <DifferentialTitle>+ de 10</DifferentialTitle>
+                        <DifferentialSubTitle>Anos de Tradição</DifferentialSubTitle>
                     </DifferentialContainer>
                 </Differentials>
             </MainContent>
