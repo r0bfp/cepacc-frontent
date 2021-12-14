@@ -2,8 +2,7 @@ import styled from "styled-components";
 
 export const MainContainer = styled.div`
     width: 100%;
-    height: 85%;
-    padding: 20px 40px;
+    min-height: 1000px;
 `;
 
 export const Main = styled.div`
@@ -12,8 +11,6 @@ export const Main = styled.div`
     box-shadow: 0 5px 5px rgb(126 126 126 / 20%);
     background-color: #FFFF;
     border-radius: 4px;
-    max-width: 1200px;
-    margin: 0 auto;
     display: flex;
     overflow: hidden;
 `;
