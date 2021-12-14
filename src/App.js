@@ -18,9 +18,9 @@ function App() {
             <Header />
             <BodyContainer>
                 <Routes />
-                <ContactUs/>
             </BodyContainer>
             <Footer/>
+            <ContactUs/>
         </BrowserRouter>
     );
 }
