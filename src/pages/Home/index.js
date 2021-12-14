@@ -4,6 +4,7 @@ import { MainContainer, Section } from "./style";
 import Carousel   from "../../components/HomeComponents/Carousel";
 import OurCourses from "../../components/HomeComponents/OurCourses";
 import WhyUs      from "../../components/HomeComponents/WhyUs";
+import Modalities from "../../components/HomeComponents/Modalities";
 
 export default function Home(){
     return (
@@ -18,7 +19,7 @@ export default function Home(){
                 <WhyUs/>
             </Section>
             <Section>
-                <div style={{height: '500px'}}></div>
+                <Modalities/>
             </Section>
         </MainContainer>
     )
