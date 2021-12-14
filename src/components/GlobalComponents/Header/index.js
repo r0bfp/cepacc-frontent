@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "antd";
 import { HomeOutlined, BankOutlined, BookOutlined, UserOutlined } from "@ant-design/icons";
 
@@ -51,6 +51,7 @@ export default function Header() {
         }
     }, []);
 
+    const { pathname } = useLocation();
 
     function handleTabSelected(tabTitle) {
         setTabs(prev => prev.map(e => {
@@ -59,6 +60,7 @@ export default function Header() {
     }
 
     return (
+        pathname !== '/area-do-aluno/dashboard' &&
         <MainContainer onTop={onTop}>
             <MainContent>
                 <LogoContainer>
