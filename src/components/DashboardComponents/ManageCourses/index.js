@@ -1,10 +1,14 @@
+import { Button } from "antd";
 import React, { useState } from "react";
-import { MainContainer } from "./style";
+import { PlusOutlined } from "@ant-design/icons";
 
-import Table from "../Table";
+import ModalAddCourse from "./Modals/AddCourse";
+import { AddCourseContainer, MainContainer, TableContainer, TableTitle } from "./style";
+import Table from "./Table";
 
 
 export default function ManageCourses() {
+    const [ addCourseModalVisible, setAddCourseModalVisible ] = useState(false);
     const [courseMock, setCourseMock] = useState([
         {
             key: 1,
@@ -59,13 +63,23 @@ export default function ManageCourses() {
 
     return (
         <MainContainer>
-            <Table
-                tableData={courseMock}
-                tableTitle='Cursos'
+            <TableTitle>Cursos</TableTitle>
+            <ModalAddCourse 
+                visible={addCourseModalVisible} 
+                setVisible={setAddCourseModalVisible} 
                 handleAddNewCourse={handleAddNewCourse}
-                handleRemoveCourse={handleRemoveCourse}
-                handleEditCourse={handleEditCourse}
             />
+            <TableContainer>
+                <Table
+                    tableData={courseMock}
+                    handleAddNewCourse={handleAddNewCourse}
+                    handleRemoveCourse={handleRemoveCourse}
+                    handleEditCourse={handleEditCourse}
+                />
+            </TableContainer>
+            <AddCourseContainer>
+                <Button onClick={() => setAddCourseModalVisible(true)} type="primary" size='large' shape="circle" icon={<PlusOutlined />} />
+            </AddCourseContainer>
         </MainContainer>
     )
 }
