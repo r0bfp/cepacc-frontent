@@ -1,10 +1,10 @@
 import styled, { css } from "styled-components";
-import { AppColors } from "../../../globalStyle";
 
 export const MainContainer = styled.div`
     width: 100%;
     height: 100px;
     background-color: #FFFF;
+    padding: 0 40px;
 
     position: fixed;
     top: 0;
