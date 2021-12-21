@@ -1,11 +1,16 @@
 import styled from "styled-components";
-import { AppColors } from "../../../globalStyle";
 
 
 export const MainContainer = styled.div`
     width: 100%;
-    height: 100%;
+    max-height: 100%;
     padding: 30px;
+    background-color: #FFF;
+    border: 1px solid #F0EEED;
+
+    label{
+        color: #002756;
+    }
 `;
 
 export const PersonalDataContainer = styled.div`
@@ -27,8 +32,8 @@ export const AddressDataContainer = styled.div`
 `;
 
 export const Title = styled.h1`
-    color: ${AppColors.primaryText};
-    margin: 0;
+    font-weight: 700;
+    color: #002756;
 `;
 
 export const ButtonSendContainer = styled.div`
@@ -37,4 +42,5 @@ export const ButtonSendContainer = styled.div`
     display: flex;
     justify-content: end;
 `;
+
 
