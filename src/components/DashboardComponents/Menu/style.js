@@ -10,7 +10,7 @@ export const MainContainer = styled.div`
     width: ${props => props.isOpen ? '248px' : '68px'};
     display: grid;
     grid-template-rows: 10% auto 15%;
-    border-right: 2px solid #F0EEED;
+    border-right: 2px solid #f7f7f7;
 `;
 
 export const HeaderContainer = styled.div`
@@ -47,14 +47,14 @@ export const MenuItemContainer = styled.div`
     display: grid;
     grid-template-columns: 68px auto;
     position: relative;
-    border-top: 1px solid #F0EEED;
+    border-top: 1px solid #f7f7f7;
 
     transition: 150ms cubic-bezier(.645,.045,.355,1);
-    background-color: ${props => props.selected && '#F0EEED'};
+    background-color: ${props => props.selected && '#f7f7f7'};
 
     :hover{
         cursor: pointer;
-        background-color: #F0EEED;
+        background-color: #f7f7f7;
     }
 
     &::after{
