@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import { ExportOutlined } from '@ant-design/icons';
 
 import { 
     FastAccessContainer,
     FastAccessContent,
-    MainContainer, MyCoursesContainer, MyCoursesContent, NewsContainer, NewsContent, PartnerContainer, PartnerLink, SubTitle, Title, 
+    MainContainer, 
+    NewsContainer, 
+    NewsContent, 
+    PartnerContainer, 
+    PartnerContent, 
+    PartnerLink, 
+    Title, 
 } from "./style";
+import MyCourses from './MyCourses';
+import Pendencies from './Pendencies';
 
 
 export default function Home() {
@@ -21,15 +29,13 @@ export default function Home() {
                 <Title>Acesso Rápido</Title>
                 <FastAccessContent>
                     <PartnerContainer>
-                        <PartnerLink>www.google.com.br</PartnerLink>
-                        <ExportOutlined />
+                        <PartnerContent>
+                            <PartnerLink>www.google.com.brrrrrrrrrrr</PartnerLink>
+                            <ExportOutlined style={{padding: '10px'}}/>
+                        </PartnerContent>
                     </PartnerContainer>
-                    <MyCoursesContainer>
-                        <SubTitle>MEUS CURSOS</SubTitle>
-                        <MyCoursesContent>
-
-                        </MyCoursesContent>
-                    </MyCoursesContainer>
+                    <MyCourses/>
+                    <Pendencies/>
                 </FastAccessContent>
             </FastAccessContainer>
         </MainContainer>
