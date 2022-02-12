@@ -28,7 +28,6 @@ export default function CourseForm() {
     return (
         <MainContainer>
             <Title>Curso</Title>
-            <Divider style={{marginTop: '10px'}}/>
             <Form layout='vertical'>
                 <Form.Item
                     label="MODALIDADE"
@@ -39,32 +38,6 @@ export default function CourseForm() {
                         <Radio.Button value="online">Online</Radio.Button>
                         <Radio.Button value="semipresencial">Semipresencial</Radio.Button>
                     </Radio.Group>
-                </Form.Item>
-                <Form.Item
-                    label="ÁREA DO CONHECIMENTO"
-                    name="area"
-                    style={{width: '200px'}}
-                >
-                    <Select showSearch>
-                        {
-                            courseArea.map((e, i) => {
-                                return <Select.Option key={i} value={e}>{e}</Select.Option>
-                            })
-                        }
-                    </Select>
-                </Form.Item>
-                <Form.Item
-                    label="TIPO"
-                    name="type"
-                    style={{width: '200px'}}
-                >
-                    <Select showSearch>
-                        {
-                            courseTypes.map((e, i) => {
-                                return <Select.Option key={i} value={e}>{e}</Select.Option>
-                            })
-                        }
-                    </Select>
                 </Form.Item>
                 <Form.Item
                     label="CURSO"
