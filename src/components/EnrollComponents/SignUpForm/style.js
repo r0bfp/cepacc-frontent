@@ -3,11 +3,9 @@ import { AppColors } from "../../../globalStyle";
 
 
 export const MainContainer = styled.div`
-    max-width: 400px;
+    width: 300px;
+    padding: 30px 0;
     margin: 0 auto;
-    padding: 10px 50px 20px 50px;
-    box-shadow: 0 5px 5px rgb(126 126 126 / 20%);
-    background-color: #FFFF;
 
     label{
         color: #a2b0b8;
@@ -17,6 +15,5 @@ export const MainContainer = styled.div`
 `;
 
 export const Title = styled.h1`
-    margin: 0;
     color: ${AppColors.primaryText};
 `;

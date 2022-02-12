@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Input, Form, Divider } from "antd";
+import { Input, Form } from "antd";
 
 import { MainContainer, Title } from "./style";
 
@@ -19,7 +19,6 @@ export default function SignUpForm() {
     return (
         <MainContainer>
             <Title>Login</Title>
-            <Divider style={{marginTop: '10px'}}/>
             <Form layout='vertical'>
                 <Form.Item
                     label="EMAIL"
