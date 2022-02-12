@@ -9,7 +9,7 @@ export const MainContainer = styled.div`
     position: fixed;
     top: 0;
     z-index: 999;
-    box-shadow: ${props => props.onTop ? '' : ' 0 10px 15px rgb(25 25 25 / 10%)'};
+    box-shadow: ${props => props.isOnTop ? '' : ' 0 10px 15px rgb(25 25 25 / 10%)'};
 `;
 
 export const MainContent = styled.div`
@@ -27,6 +27,7 @@ export const LogoContainer = styled.div`
     display: flex;
     justify-content: center;
     padding: 5px;
+    cursor: pointer;
 
     img{
         height: 100%;
@@ -57,24 +58,6 @@ export const MenuItem = styled.li`
     cursor: pointer;
     position: relative;
     transition: 200ms cubic-bezier(.645,.045,.355,1);
-    /* color: ${props => props.selected ? '#096FB5' : '#000000d9'}; */
-/* 
-    &::after{
-        content: '';
-        width: 100%;
-        display: block;
-        position: absolute;
-        bottom: 0;
-        border-radius: 20%;
-        transition: .3s cubic-bezier(.645,.045,.355,1);
-
-        ${props => props.selected && MenuItemAfter};
-    }
-    
-    
-    &:hover::after{
-        ${MenuItemAfter}
-    } */
 
     &:hover{
         span{
