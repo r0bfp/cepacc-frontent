@@ -8,7 +8,6 @@ export default function PersonalForm() {
     return (
         <MainContainer>
             <Title>Dados Pessoais</Title>
-            <Divider style={{marginTop: '10px'}}/>
             <Form layout='vertical'>
                 <Form.Item label="NOME COMPLETO">
                     <Input />
