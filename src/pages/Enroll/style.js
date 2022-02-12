@@ -1,37 +1,63 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 
-export const GlobalStyle = createGlobalStyle`
-    body {
-        overflow: hidden;
-    }
-`
 
 export const MainContainer = styled.div`
     width: 100%;
     height: 85%;
-    padding: 80px 40px;
+    padding: 180px 40px;
 `;
 
 export const Main = styled.div`
+    height: 100%;
+    max-width: 1200px;
+    min-height: 700px;
+    background-color: #FFF;
+    border: 1px solid #F0EEED;
+    border-radius: 5px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+`;
+
+export const Content = styled.div`
     width: 100%;
     height: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto 500px auto;
+    grid-template-rows: 80px auto 80px;
 `;
 
-export const StepContentContainer = styled.div`
+export const Banner = styled.div`
     width: 100%;
-    padding-top: 20px;
-    margin: 0 auto;
+    height: 100%;
+
+    img{
+        width: 100%;
+        height: 100%;
+    }
 `;
 
-export const NextButtonContainer = styled.div`
+export const StepperContainer = styled.div`
     width: 100%;
+    height: 100%;
+    padding: 0 50px;
     display: flex;
-    justify-content: end;
-    padding-right: 20%;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #F0EEED;
+`;
+
+export const StepsContainer = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const ButtonsContainer = styled.div`
+    width: 100%;
+    padding: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 `;

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { Divider, Button } from "antd";
+import { Button, Steps } from "antd";
+import { ArrowRightOutlined } from '@ant-design/icons';
 
-import { Main, MainContainer, NextButtonContainer, StepContentContainer, GlobalStyle } from "./style";
-import Stepper      from "../../components/EnrollComponents/Stepper";
-import SignUpForm   from "../../components/EnrollComponents/SignUpForm";
-import CourseForm   from "../../components/EnrollComponents/CourseForm";
-import PersonalForm from "../../components/EnrollComponents/PersonalForm";
-import AddressForm  from "../../components/EnrollComponents/AddressForm";
-
+import { Banner, ButtonsContainer, Content, Main, MainContainer, StepperContainer, StepsContainer } from "./style";
+import SignUpForm     from "../../components/EnrollComponents/SignUpForm";
+import CourseForm     from "../../components/EnrollComponents/CourseForm";
+import PersonalForm   from "../../components/EnrollComponents/PersonalForm";
+import Congratulation from "../../components/EnrollComponents/Congratulations";
+import banner         from "../../assets/banner.png"
 
 export default function Enroll(){
     const [steps, setSteps] = useState([
@@ -27,8 +27,8 @@ export default function Enroll(){
             selected: false
         },
         {
-            key: 'address-form',
-            component: AddressForm,
+            key: 'congratulation',
+            component: Congratulation,
             selected: false
         },
     ]);
@@ -55,7 +55,7 @@ export default function Enroll(){
                 if (index === previousStepIndex){
                     return {...step, selected: true } 
                 }
-    
+
                 return {...step, selected: false}
             }));
         }
@@ -63,32 +63,49 @@ export default function Enroll(){
 
     return (
         <MainContainer>
-            <GlobalStyle/>
             <Main>
-                <Stepper currentStepIndex={steps.findIndex((e) => e.selected && e)}/>
-                <Divider/>
-                <StepContentContainer>
-                    { 
-                        steps.map((step, i) => {
-                            return step.selected && <step.component key={i}/>
-                        })
+                <Content>
+                    <StepperContainer>
+                        <Steps size='small' current={steps.findIndex(value => value.selected)}>
+                            <Steps.Step title="Dados Acesso"/>
+                            <Steps.Step title="Sobre o Curso"/>
+                            <Steps.Step title="Informações Pessoais"/>
+                        </Steps>
+                    </StepperContainer>
+                    <StepsContainer>
+                        {
+                            steps.map((step, i) => {
+                                return step.selected && <step.component key={i}/>
+                            })
+                        }
+                    </StepsContainer>
+                    {
+                        !steps.at(-1).selected &&
+                        <ButtonsContainer>
+                            <Button
+                                type='primary'
+                                size='large'
+                                shape="round"
+                                onClick={() => handleBack()}
+                                disabled={steps.findIndex((e) => e.selected && e) === 0}
+                            >
+                                Voltar
+                            </Button>
+                            <Button
+                                type='primary'
+                                size='large'
+                                shape="round"
+                                onClick={() => handleNext()}
+                            >
+                                Avançar
+                                <ArrowRightOutlined />
+                            </Button>
+                        </ButtonsContainer>
                     }
-                </StepContentContainer>
-                <NextButtonContainer>
-                    <Button 
-                        type='default' 
-                        size='large' 
-                        onClick={() => handleBack()}
-                        disabled={steps.findIndex((e) => e.selected && e) === 0}
-
-                    >Voltar</Button>
-                    <Button 
-                        type='primary' 
-                        size='large' 
-                        onClick={() => handleNext()}
-                        style={{marginLeft: '15px'}}
-                    >Avançar</Button>
-                </NextButtonContainer>
+                </Content>
+                <Banner>
+                    <img src={banner} alt='banner'/>
+                </Banner>
             </Main>
         </MainContainer>
     )
