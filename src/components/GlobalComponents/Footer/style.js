@@ -4,6 +4,7 @@ export const MainContainer = styled.div`
     width: 100%;
     background-color: #01468C;
     display: flex;
+    z-index: 999;
 `;
 
 export const MainContent = styled.div`

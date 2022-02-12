@@ -19,8 +19,14 @@ import {
 export default function Footer() {
     const { pathname } = useLocation();
 
+    const notAllowedPages = [
+        '/area-do-aluno/dashboard'
+    ]
+
+    console.log(pathname);
+
     return (
-        pathname !== '/area-do-aluno/dashboard' &&
+        !notAllowedPages.includes(pathname) &&
         <MainContainer>
             <MainContent>
                 <InfosColumn>
