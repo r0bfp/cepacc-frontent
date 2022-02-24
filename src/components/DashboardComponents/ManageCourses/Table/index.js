@@ -71,6 +71,7 @@ export default function ManageCourses({
                 handleRemoveCourse={handleRemoveCourse}
             />
             <Table 
+                scroll={{ y: 500 }}
                 dataSource={tableData} 
                 pagination={false} 
                 bordered={true}
@@ -88,8 +89,8 @@ export default function ManageCourses({
                     dataIndex="courseType"
                     key="type"
                     align='center'
-                    render={(type) => <Tag color={AppColors.coursesColors[type]}
-                >{type}</Tag>}/>
+                    render={(type) => <Tag color={AppColors.areaColors[type]}>{type}</Tag>}
+                />
                 <Table.Column title="Área" dataIndex="courseArea" key="area" align='center'/>
                 <Table.Column title="Modalidade" dataIndex="courseModality" key="modality" align='center'/>
                 <Table.Column

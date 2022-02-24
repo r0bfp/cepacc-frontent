@@ -34,6 +34,94 @@ export default function ManageCourses() {
             courseArea: 'Educação',
             courseModality: 'Presencial'
         },
+        {
+            key: 3,
+            courseName: 'curso teste 2',
+            courseDuration: 470,
+            courseType: 'Pós-Graduação',
+            courseArea: 'Educação',
+            courseModality: 'Presencial'
+        },
+        {
+            key: 3,
+            courseName: 'curso teste 2',
+            courseDuration: 470,
+            courseType: 'Pós-Graduação',
+            courseArea: 'Educação',
+            courseModality: 'Presencial'
+        },
+        {
+            key: 3,
+            courseName: 'curso teste 2',
+            courseDuration: 470,
+            courseType: 'Pós-Graduação',
+            courseArea: 'Educação',
+            courseModality: 'Presencial'
+        },
+        {
+            key: 3,
+            courseName: 'curso teste 2',
+            courseDuration: 470,
+            courseType: 'Pós-Graduação',
+            courseArea: 'Educação',
+            courseModality: 'Presencial'
+        },
+        {
+            key: 3,
+            courseName: 'curso teste 2',
+            courseDuration: 470,
+            courseType: 'Pós-Graduação',
+            courseArea: 'Educação',
+            courseModality: 'Presencial'
+        },
+        {
+            key: 3,
+            courseName: 'curso teste 2',
+            courseDuration: 470,
+            courseType: 'Pós-Graduação',
+            courseArea: 'Educação',
+            courseModality: 'Presencial'
+        },
+        {
+            key: 3,
+            courseName: 'curso teste 2',
+            courseDuration: 470,
+            courseType: 'Pós-Graduação',
+            courseArea: 'Educação',
+            courseModality: 'Presencial'
+        },
+        {
+            key: 3,
+            courseName: 'curso teste 2',
+            courseDuration: 470,
+            courseType: 'Pós-Graduação',
+            courseArea: 'Educação',
+            courseModality: 'Presencial'
+        },
+        {
+            key: 3,
+            courseName: 'curso teste 2',
+            courseDuration: 470,
+            courseType: 'Pós-Graduação',
+            courseArea: 'Educação',
+            courseModality: 'Presencial'
+        },
+        {
+            key: 3,
+            courseName: 'curso teste 2',
+            courseDuration: 470,
+            courseType: 'Pós-Graduação',
+            courseArea: 'Educação',
+            courseModality: 'Presencial'
+        },
+        {
+            key: 3,
+            courseName: 'curso teste 2000',
+            courseDuration: 470,
+            courseType: 'Pós-Graduação',
+            courseArea: 'Educação',
+            courseModality: 'Presencial'
+        },
     ]);
 
     function handleAddNewCourse(courseData) {

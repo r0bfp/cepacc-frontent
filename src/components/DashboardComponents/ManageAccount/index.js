@@ -44,7 +44,6 @@ export default function ManageAccount() {
     return (
         <MainContainer>
             <Title>Dados Pessoais</Title>
-            <Divider style={{margin: 0, marginBottom: '10px'}}/>
             <Form layout='vertical'>
                 <PersonalDataContainer>
                     <Form.Item
@@ -85,7 +84,6 @@ export default function ManageAccount() {
                 </PersonalDataContainer>
             </Form>
             <Title>Endereço</Title>
-            <Divider style={{margin: 0, marginBottom: '10px'}}/>
             <Form layout='vertical'>
                 <AddressDataContainer>
                     <Form.Item
@@ -139,7 +137,7 @@ export default function ManageAccount() {
                 </AddressDataContainer>
             </Form>
             <ButtonSendContainer>
-                <Button type='primary'>Salvar</Button>
+                <Button type='primary' size="large">Salvar</Button>
             </ButtonSendContainer>
         </MainContainer>
     )

@@ -4,9 +4,6 @@ import styled from "styled-components";
 export const MainContainer = styled.div`
     width: 100%;
     max-height: 100%;
-    padding: 30px;
-    background-color: #FFF;
-    border: 1px solid #F0EEED;
 
     label{
         color: #002756;
@@ -19,6 +16,10 @@ export const PersonalDataContainer = styled.div`
     grid-template-areas:
         "name name birth"
         "cpf rg phone";
+    background-color: #FFF;
+    border: 1px solid #F0EEED;
+    padding: 20px;
+    margin-bottom: 40px;
 `;
 
 export const AddressDataContainer = styled.div`
@@ -29,6 +30,10 @@ export const AddressDataContainer = styled.div`
         "street district number"
         "city state .";
     margin-bottom: auto;
+    background-color: #FFF;
+    border: 1px solid #F0EEED;
+    padding: 20px;
+    margin-bottom: 40px;
 `;
 
 export const Title = styled.h1`

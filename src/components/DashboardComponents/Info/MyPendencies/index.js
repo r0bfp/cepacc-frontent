@@ -1,18 +1,24 @@
 import React from "react";
-import { ArrowRightOutlined } from '@ant-design/icons';
 
-import { Content, Header, SubTitle, MoreButton, MainContainer, CourseContainer, CourseIcon, CourseInitials, CourseName, CourseInfosContainer, CourseType} from "./style";
+import { 
+    Content,
+    Header,
+    Title,
+    MainContainer,
+    CourseContainer,
+    CourseIcon,
+    CourseInitials,
+    CourseName, 
+    CourseInfosContainer, 
+    CourseType
+} from "./style";
 
 
-export default function MyCourses() {
+export default function MyPendencies() {
     return (
         <MainContainer>
             <Header>
-                <SubTitle>MEUS CURSOS</SubTitle>
-                <MoreButton>
-                    <span>Mais</span>
-                    <ArrowRightOutlined />
-                </MoreButton>
+                <Title>PENDÊNCIAS</Title>
             </Header>
             <Content>
                 <CourseContainer>

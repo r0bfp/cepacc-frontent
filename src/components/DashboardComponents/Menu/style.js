@@ -3,93 +3,93 @@ import styled, { css } from "styled-components";
 
 export const MainContainer = styled.div`
     height: 100%;
-    width: 68px;
-    background-color: #FFF;
-    overflow: hidden;
-    transition: 200ms ease-in-out;
-    width: ${props => props.isOpen ? '248px' : '68px'};
+    width: 100%;
     display: grid;
-    grid-template-rows: 10% auto 15%;
-    border-right: 2px solid #f7f7f7;
+    grid-template-rows: 20% auto 30%;
 `;
 
+// HEADER =================================
 export const HeaderContainer = styled.div`
-    width: 68px;
     height: 100%;
+    width: 100%;
+    padding-top: 50px;
     display: flex;
-    align-items: end;
     justify-content: center;
-    padding: 20px 0;
 `;
 
+export const LogoContainer = styled.div`
+    width: 80px;
+    height: 80px;
+
+    img{
+        width: 100%;
+        height: 100%;
+    }
+`;
+
+// BODY ===================================
 export const BodyContainer = styled.div`
-    width: 100%;
     height: 100%;
-`;
-
-export const FooterContainer = styled.div`
-    height: 50px;
-    span{
-        color: #EB005C;
-    }
-
-`;
-
-export const MenuItemAfter = css`
-    width: 5px;
-    height: 100%;
-    background-color: #01468C;
-`;
-
-export const MenuItemContainer = styled.div`
-    height: 50px;
     width: 100%;
-    display: grid;
-    grid-template-columns: 68px auto;
-    position: relative;
-    border-top: 1px solid #f7f7f7;
+`;
 
-    transition: 150ms cubic-bezier(.645,.045,.355,1);
-    background-color: ${props => props.selected && '#f7f7f7'};
-
-    :hover{
-        cursor: pointer;
-        background-color: #f7f7f7;
-    }
-
-    &::after{
+const selectedBarIndicator = css`
+    ::after{
         content: '';
-        display: block;
-        position: absolute;
-        bottom: 0;
-        transition: .3s cubic-bezier(.645,.045,.355,1);
-
-        ${props => props.selected && MenuItemAfter};
+        width: 5px;
+        height: 45%;
+        background-color: #0e89c4;
+        border-radius: 20%;
     }
 `;
 
-export const MenuItemImageContainer = styled.div`
+export const ItemContainer = styled.div`
+    height: 70px;
     width: 100%;
+    padding-left: 40px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    cursor: pointer;
+
+    :hover label{
+        color: #002756;
+    }
+
+    ${props => props.selected && selectedBarIndicator}
+`;
+
+export const ItemIconContainer = styled.div`
+    min-width: 70px;
     height: 100%;
-    font-size: 20px;
-    color: ${props => props.selected ? "#01468C" : "#A4ADB3"};
+    font-size: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 200ms cubic-bezier(.645,.045,.355,1);
+
+    color: ${props => props.selected ? '#0e89c4' : '#b3b9c4'};
 `;
 
-export const MenuItemTextContainer = styled.div`
+export const ItemTextContainer = styled.div`
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
-    padding-left: 10px;
-    overflow: hidden;
-    white-space: nowrap;
+    padding-left: 20px;
 `;
 
-export const MenuItemText = styled.span`
-    font-size: 14px;
-    font-weight: 600;
-    color: ${props => props.selected ? "#01468C" : "#A4ADB3"};
+export const ItemText = styled.label`
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 200ms cubic-bezier(.645,.045,.355,1);
+    color: ${props => props.selected ? '#002756' : '#b3b9c4'};
+`;
+
+
+// FOOTER ==================================
+export const FooterContainer = styled.div`
+    height: 100%;
+    width: 100%;
 `;

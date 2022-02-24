@@ -1,34 +1,37 @@
 import React, { useState } from "react";
 import { HomeOutlined, BookOutlined, UserOutlined } from "@ant-design/icons";
 
-import { MainContainer, ContentContainer } from "./style";
+import { MainContainer, ContentContainer, MenuContainer, InfoContainer } from "./style";
 import DashboardMenu from "../../components/DashboardComponents/Menu";
 import Home          from "../../components/DashboardComponents/Home";
 import ManageCourses from "../../components/DashboardComponents/ManageCourses";
 import ManageAccount from "../../components/DashboardComponents/ManageAccount";
+import Info from "../../components/DashboardComponents/Info";
 
 
 export default function Dashboard(){
     const [ dashboards, setDashboards ] = useState([
         {
             key: 'home',
-            text: 'Início',
+            label: 'Início',
             icon: () => (<HomeOutlined />),
             component: () => (<Home/>),
             selected: true
         },
         {
             key: 'user',
-            text: 'Meus Dados',
+            label: 'Meus Dados',
             icon: () => (<UserOutlined />),
-            component: () => (<ManageAccount/>),
+            component: () => (<h1>teste</h1>),
+            // component: () => (<ManageAccount/>),
             selected: false
         },
         {
             key: 'courses',
-            text: 'Cursos',
+            label: 'Cursos',
             icon: () => (<BookOutlined />),
-            component: () => (<ManageCourses/>),
+            component: () => (<h1>teste</h1>),
+            // component: () => (<ManageCourses/>),
             selected: false
         },
     ]);
@@ -44,17 +47,24 @@ export default function Dashboard(){
 
     return (
         <MainContainer>
-            <DashboardMenu 
-                handleSelectedTab={handleSelectedTab}
-                tabs={dashboards}
-            />
+            <MenuContainer>
+                <DashboardMenu 
+                    handleSelectedTab={handleSelectedTab}
+                    tabs={dashboards}
+                />
+            </MenuContainer>
             <ContentContainer>
-                {
-                    dashboards.map((e, i) => {
-                        return e.selected && (<e.component key={i}/>)
-                    })
-                }
+                <ContentContainer>
+                    {
+                        dashboards.map((e, i) => {
+                            return e.selected && (<e.component key={i}/>)
+                        })
+                    }
+                </ContentContainer>
             </ContentContainer>
+            <InfoContainer>
+                <Info/>
+            </InfoContainer>
         </MainContainer>
     )
 }

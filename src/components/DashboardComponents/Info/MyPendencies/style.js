@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 export const MainContainer = styled.div`
     width: 100%;
-    margin-bottom: 40px;
 `;
 
 export const Header = styled.div`
@@ -16,24 +15,24 @@ export const Header = styled.div`
 export const Content = styled.div`
     width: 100%;
     height: 200px;
-    padding: 20px;
+    padding: 10px 0;
     background-color: #FFF;
-    border: 1px solid #F0EEED;
-    border-radius: 5px;
+    border-radius: 15px;
     overflow: scroll;
 `;
 
-export const SubTitle = styled.h3`
+export const Title = styled.h3`
     font-size: 14px;
-    font-weight: 800;
-    color: #909aa0;
+    font-weight: 900;
+    color: #002756;
     margin: 0;
 `;
 
 export const MoreButton = styled.button`
     background-color: transparent;
     border: none;
-    color: #909aa0;
+    color: #002756;
+    font-weight: 600;
     padding: 5px;
     cursor: pointer;
     font-size: 14px;
@@ -55,11 +54,11 @@ export const CourseContainer = styled.div`
     align-items: center;
     cursor: pointer;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 15px;
     transition: 100ms cubic-bezier(.645,.045,.355,1);
 
     :hover{
-        background-color: #f7f7f7;
+        background-color: #f5f5f5;
     }
 `;
 
@@ -89,12 +88,13 @@ export const CourseInfosContainer = styled.div`
 export const CourseName = styled.span`
     margin: 0;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 700;
     color: #002756;
 `;
 
 export const CourseType = styled.span`
     margin: 0;
-    font-size: 12px;
-    color: #909aa0;
+    font-weight: 600;
+    font-size: 14px;
+    color: #b3b9c4;
 `;

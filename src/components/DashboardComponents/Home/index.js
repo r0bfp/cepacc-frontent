@@ -1,43 +1,38 @@
-import React from "react";
-import { ExportOutlined } from '@ant-design/icons';
+import React, { useState } from "react";
+
+import { toTitleCase } from "../../../tools";
 
 import { 
-    FastAccessContainer,
-    FastAccessContent,
+    HeaderContainer,
+    HeaderDate,
+    WelcomeTitle,
     MainContainer, 
-    NewsContainer, 
-    NewsContent, 
-    PartnerContainer, 
-    PartnerContent, 
-    PartnerLink, 
     Title, 
+    WelcomeContainer,
+    WelcomeText
 } from "./style";
-import MyCourses from './MyCourses';
-import Pendencies from './Pendencies';
 
 
 export default function Home() {
+    const date = new Date();
+    const today = {
+        weekday: date.toLocaleDateString('default', { weekday: 'long' }),
+        day: date.getDate(),
+        month: date.toLocaleDateString('default', { month: 'long' }),
+        year: date.getFullYear(),
+    };
+
+
     return (
         <MainContainer>
-            <NewsContainer>
-                <Title>Notícias</Title>
-                <NewsContent>
-                    <span>Sejam bem vindos à plataforma EAD da faculdade Educamais, nela você fará seu curso de graduação de forma dinâmica e interativa. O percurso de aprendizagem se dá por meio da vídeo aulas, material de apoio(texto) e atividades práticas. você pode ainda consultar seu histórico e fazer pesquisas em bibliotecas de domínio público, além, de consultar o seu tutor para sanar dúvidas sobre as disciplinas e a plataforma.</span>
-                </NewsContent>
-            </NewsContainer>
-            <FastAccessContainer>
-                <Title>Acesso Rápido</Title>
-                <FastAccessContent>
-                    <PartnerContainer>
-                        <PartnerContent>
-                            <PartnerLink>www.google.com.brrrrrrrrrrr</PartnerLink>
-                            <ExportOutlined style={{padding: '10px'}}/>
-                        </PartnerContent>
-                    </PartnerContainer>
-                    <MyCourses/>
-                    <Pendencies/>
-                </FastAccessContent>
-            </FastAccessContainer>
+            <HeaderContainer>
+                <Title>Início</Title>
+                <HeaderDate>{`${toTitleCase(today.weekday)}, ${today.day} de ${toTitleCase(today.month)} de ${today.year}`}</HeaderDate>
+            </HeaderContainer>
+            <WelcomeContainer>
+                <WelcomeTitle>Bem vindo(a) de volta Usuário Teste!</WelcomeTitle>
+                <WelcomeText>Laborum dolor exercitation aute culpa eiusmod excepteur tempor id ea commodo. Ad sunt velit nostrud ut. Voluptate ad esse laboris mollit aute incididunt mollit proident eiusmod exercitation enim id. Officia esse dolore sit mollit. Elit sint duis voluptate eu fugiat dolor est voluptate amet eu.</WelcomeText>
+            </WelcomeContainer>
         </MainContainer>
     )
 }
