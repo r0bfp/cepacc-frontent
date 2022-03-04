@@ -16,23 +16,21 @@ export default function Dashboard(){
             label: 'Início',
             icon: () => (<HomeOutlined />),
             component: () => (<Home/>),
-            selected: true
+            selected: false
         },
         {
             key: 'user',
             label: 'Meus Dados',
             icon: () => (<UserOutlined />),
-            component: () => (<h1>teste</h1>),
-            // component: () => (<ManageAccount/>),
+            component: () => (<ManageAccount/>),
             selected: false
         },
         {
             key: 'courses',
             label: 'Cursos',
             icon: () => (<BookOutlined />),
-            component: () => (<h1>teste</h1>),
-            // component: () => (<ManageCourses/>),
-            selected: false
+            component: () => (<ManageCourses/>),
+            selected: true
         },
     ]);
 
