@@ -1,173 +1,91 @@
-import { Button } from "antd";
-import React, { useState } from "react";
-import { PlusOutlined } from "@ant-design/icons";
+import { Button, Dropdown } from "antd";
+import React, { useEffect, useState } from "react";
 
+import TableRowActionButton from "./TableRowActionButton";
 import ModalAddCourse from "./Modals/AddCourse";
-import { AddCourseContainer, MainContainer, TableContainer, TableTitle } from "./style";
+import ModalRemoveCourse from "./Modals/RemoveCourse";
+import ModalEditCourse from "./Modals/EditCourse";
 import Table from "./Table";
+import { AddCourseContainer, MainContainer, Title } from "./style";
 
 
 export default function ManageCourses() {
-    const [ addCourseModalVisible, setAddCourseModalVisible ] = useState(false);
-    const [courseMock, setCourseMock] = useState([
-        {
-            key: 1,
-            courseName: 'curso teste',
-            courseDuration: 450,
-            courseType: '2° Licenciatura',
-            courseArea: 'Educação',
-            courseModality: 'Presencial'
-        },
-        {
-            key: 2,
-            courseName: 'curso teste 2',
-            courseDuration: 470,
-            courseType: 'Pós-Graduação',
-            courseArea: 'Educação',
-            courseModality: 'Presencial'
-        },
-        {
-            key: 3,
-            courseName: 'curso teste 2',
-            courseDuration: 470,
-            courseType: 'Pós-Graduação',
-            courseArea: 'Educação',
-            courseModality: 'Presencial'
-        },
-        {
-            key: 3,
-            courseName: 'curso teste 2',
-            courseDuration: 470,
-            courseType: 'Pós-Graduação',
-            courseArea: 'Educação',
-            courseModality: 'Presencial'
-        },
-        {
-            key: 3,
-            courseName: 'curso teste 2',
-            courseDuration: 470,
-            courseType: 'Pós-Graduação',
-            courseArea: 'Educação',
-            courseModality: 'Presencial'
-        },
-        {
-            key: 3,
-            courseName: 'curso teste 2',
-            courseDuration: 470,
-            courseType: 'Pós-Graduação',
-            courseArea: 'Educação',
-            courseModality: 'Presencial'
-        },
-        {
-            key: 3,
-            courseName: 'curso teste 2',
-            courseDuration: 470,
-            courseType: 'Pós-Graduação',
-            courseArea: 'Educação',
-            courseModality: 'Presencial'
-        },
-        {
-            key: 3,
-            courseName: 'curso teste 2',
-            courseDuration: 470,
-            courseType: 'Pós-Graduação',
-            courseArea: 'Educação',
-            courseModality: 'Presencial'
-        },
-        {
-            key: 3,
-            courseName: 'curso teste 2',
-            courseDuration: 470,
-            courseType: 'Pós-Graduação',
-            courseArea: 'Educação',
-            courseModality: 'Presencial'
-        },
-        {
-            key: 3,
-            courseName: 'curso teste 2',
-            courseDuration: 470,
-            courseType: 'Pós-Graduação',
-            courseArea: 'Educação',
-            courseModality: 'Presencial'
-        },
-        {
-            key: 3,
-            courseName: 'curso teste 2',
-            courseDuration: 470,
-            courseType: 'Pós-Graduação',
-            courseArea: 'Educação',
-            courseModality: 'Presencial'
-        },
-        {
-            key: 3,
-            courseName: 'curso teste 2',
-            courseDuration: 470,
-            courseType: 'Pós-Graduação',
-            courseArea: 'Educação',
-            courseModality: 'Presencial'
-        },
-        {
-            key: 3,
-            courseName: 'curso teste 2',
-            courseDuration: 470,
-            courseType: 'Pós-Graduação',
-            courseArea: 'Educação',
-            courseModality: 'Presencial'
-        },
-        {
-            key: 3,
-            courseName: 'curso teste 2000',
-            courseDuration: 470,
-            courseType: 'Pós-Graduação',
-            courseArea: 'Educação',
-            courseModality: 'Presencial'
-        },
+    const [modalAddCourseVisible, setModalAddCourseVisible] = useState(false);
+    const [modalRemoveCourseVisible, setModalRemoveCourseVisible] = useState(false);
+    const [modalEditCourseVisible, setModalEditCourseVisible] = useState(false);
+    const [selectedRowIndex, setSelectedRowIndex] = useState(null);
+
+    const [courses, setCourses] = useState([
+        {name: 'curso', duration: 12, type: 'graduacao', area: 'saude', modality: 'ead'},
+        {name: 'curso a', duration: 12, type: 'graduacao', area: 'saude', modality: 'ead'},
+        {name: 'curso c', duration: 12, type: 'graduacao', area: 'saude', modality: 'ead'},
     ]);
 
-    function handleAddNewCourse(courseData) {
-        setCourseMock([...courseMock, {
-            key: !!courseMock.length ? courseMock.slice(-1)[0]['key'] + 1 : 1,
-            courseName: courseData.courseName,
-            courseDuration: courseData.courseDuration,
-            courseType: courseData.courseType,
-            courseArea: courseData.courseArea,
-            courseModality: courseData.courseModality
-        }]);
-    }
+    const tableHead = ['Nome', 'Duração', 'Tipo', 'Área', 'Modalidade', 'Ação'];
 
-    function handleRemoveCourse(courseKey) {
-        setCourseMock(courseMock.filter(element => element.key !== parseInt(courseKey)));
-    }
+    useEffect(() => {
+        setCourses(courses.map(course => ({
+            ...course,
+            render: <TableRowActionButton 
+                setModalRemoveCourseVisible={setModalRemoveCourseVisible}
+                setModalEditCourseVisible={setModalEditCourseVisible}
+                setSelectedRowIndex={setSelectedRowIndex}
+            /> 
+        })));
+    }, []);
 
-    function handleEditCourse(courseData) {
-        setCourseMock(courseMock.map(currentCouse => {
-            if(parseInt(currentCouse.key) === parseInt(courseData.key)){
-                return { ...courseData, key: parseInt(courseData.key) };
-            }
-
-            return currentCouse;
+    function handleRemoveCourse() {
+        setCourses(courses.filter((course, index) => {
+            return index !== selectedRowIndex && course;
         }));
+    }
+
+    function handleEditCourse(newCourseData) {
+        setCourses(courses.map((course, index) => {
+            return index === selectedRowIndex ? newCourseData : course;
+        }));
+    }
+
+    function handleAddNewCourse(newCourse){
+        newCourse = {
+            ...newCourse, 
+            render: <TableRowActionButton
+                setModalRemoveCourseVisible={setModalRemoveCourseVisible}
+                setModalEditCourseVisible={setModalEditCourseVisible}
+                setSelectedRowIndex={setSelectedRowIndex}
+            /> 
+        }
+
+        setCourses(prev => [...prev, newCourse])
     }
 
     return (
         <MainContainer>
-            <TableTitle>Cursos</TableTitle>
+            <Title>Cursos</Title>
+            <Table tableHead={tableHead} tableData={courses}/>
+            <AddCourseContainer>
+                <Button 
+                    type="primary" 
+                    onClick={() => setModalAddCourseVisible(prev => !prev)}
+                >Adicionar Curso</Button>
+            </AddCourseContainer>
             <ModalAddCourse 
-                visible={addCourseModalVisible} 
-                setVisible={setAddCourseModalVisible} 
+                visible={modalAddCourseVisible} 
+                setVisible={setModalAddCourseVisible} 
                 handleAddNewCourse={handleAddNewCourse}
             />
-            <TableContainer>
-                <Table
-                    tableData={courseMock}
-                    handleAddNewCourse={handleAddNewCourse}
-                    handleRemoveCourse={handleRemoveCourse}
-                    handleEditCourse={handleEditCourse}
-                />
-            </TableContainer>
-            <AddCourseContainer>
-                <Button onClick={() => setAddCourseModalVisible(true)} type="primary" size='large' shape="circle" icon={<PlusOutlined />} />
-            </AddCourseContainer>
+            <ModalRemoveCourse 
+                visible={modalRemoveCourseVisible} 
+                setVisible={setModalRemoveCourseVisible} 
+                handleRemoveCourse={handleRemoveCourse}
+                selectedCourse={courses[selectedRowIndex]}
+            />
+            <ModalEditCourse 
+                visible={modalEditCourseVisible} 
+                setVisible={setModalEditCourseVisible} 
+                handleEditCourse={handleEditCourse}
+                selectedCourse={courses[selectedRowIndex]}
+            />
         </MainContainer>
     )
 }
