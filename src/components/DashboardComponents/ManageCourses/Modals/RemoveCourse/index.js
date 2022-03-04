@@ -4,10 +4,10 @@ import { Button } from "antd";
 
 import { Body, Footer, Header, MainContainer, MainContent, Title } from "./style";
 
-export default function ModalRemoveCourse({visible, setVisible, selectedRow, handleRemoveCourse}) {
-    function handleOkClick(courseKey) {
-        handleRemoveCourse(courseKey);
+export default function ModalRemoveCourse({visible, setVisible, handleRemoveCourse, selectedCourse}) {
+    function handleOkClick(){
         setVisible(prev => !prev);
+        handleRemoveCourse();
     }
 
     return (
@@ -18,11 +18,11 @@ export default function ModalRemoveCourse({visible, setVisible, selectedRow, han
                     <Title>Atenção!</Title>
                 </Header>
                 <Body>
-                    <span>Tem certeza que deseja remover o curso <strong>{selectedRow.courseName}</strong></span>
+                    <span>Tem certeza que deseja remover o curso <strong>{selectedCourse && selectedCourse.name}</strong>?</span>
                 </Body>
                 <Footer>
                     <Button onClick={() => setVisible(prev => !prev)}>Cancelar</Button>
-                    <Button onClick={() => handleOkClick(selectedRow.key)} type='primary' danger>REMOVER</Button>
+                    <Button onClick={handleOkClick} type='primary' danger>REMOVER</Button>
                 </Footer>
             </MainContent>
         </MainContainer>

@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import { AppColors } from "../../../../../globalStyle";
 
 
-export const MainContainer = styled.div`
+export const BlackBackground = styled.div`
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -22,11 +21,23 @@ export const MainContent = styled.div`
     background-color: #FFFFFF;
     min-width: 500px;
     border-radius: 4px;
+
+    label {
+        font-weight: 600;
+        font-size: 12px;
+        color: #002756;
+    }
+
+    input, .ant-select-selector, .ant-input-number {
+        border-radius: 5px !important;
+    }
 `;
 
 export const Title = styled.h1`
-    color: ${AppColors.primaryText};
+    color: #002756;
     margin: 0;
+    font-size: 20px;
+    font-weight: 700;
 `;
 
 export const Header = styled.div`
@@ -46,7 +57,8 @@ export const Footer = styled.div`
     justify-content: end;
     padding: 20px;
 
-    button{
-        margin-left: 10px;;
+    button {
+        margin-left: 10px;
+        border-radius: 15px;
     }
 `;

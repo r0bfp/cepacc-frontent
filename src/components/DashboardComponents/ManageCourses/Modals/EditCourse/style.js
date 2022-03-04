@@ -26,8 +26,10 @@ export const MainContent = styled.div`
 `;
 
 export const Title = styled.h1`
-    color: ${AppColors.primaryText};
+    color: #002756;
     margin: 0;
+    font-size: 20px;
+    font-weight: 700;
     margin-left: 20px;
 `;
 
@@ -45,7 +47,16 @@ export const Header = styled.div`
 
 export const Body = styled.div`
     padding: 20px 40px;
-    color: ${AppColors.primaryText};
+
+    label {
+        font-weight: 600;
+        font-size: 12px;
+        color: #002756;
+    }
+
+    input, .ant-select-selector, .ant-input-number {
+        border-radius: 5px !important;
+    }
 `;
 
 export const Footer = styled.div`
@@ -54,7 +65,8 @@ export const Footer = styled.div`
     justify-content: end;
     padding: 20px;
 
-    button{
+    button {
         margin-left: 10px;
+        border-radius: 15px;
     }
 `;

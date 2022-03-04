@@ -23,12 +23,15 @@ export const MainContent = styled.div`
     background-color: #FFFFFF;
     min-width: 500px;
     border-radius: 4px;
-    
 `;
 
 export const Title = styled.h1`
-    color: ${AppColors.primaryText};
+    display: flex;
+    align-items: center;
+    color: #002756;
     margin: 0;
+    font-size: 20px;
+    font-weight: 700;
     margin-left: 20px;
 `;
 
@@ -45,7 +48,11 @@ export const Header = styled.div`
 
 export const Body = styled.div`
     padding: 20px 40px;
-    color: ${AppColors.primaryText};
+
+    span {
+        font-size: 14px;
+        color: #002756;
+    }
 `;
 
 export const Footer = styled.div`
@@ -54,7 +61,8 @@ export const Footer = styled.div`
     justify-content: end;
     padding: 20px;
 
-    button{
+    button {
         margin-left: 10px;
+        border-radius: 15px;
     }
 `;

@@ -24,13 +24,18 @@ const coursesModalitiesMock = [
     'Semipresencial',
 ];
 
-export default function ModalEditCourse({visible, setVisible, selectedRow, handleEditCourse}) {
-    const [selectedRowData, setSelectedRowData] = useState(selectedRow);
+export default function ModalEditCourse({visible, setVisible, selectedCourse, handleEditCourse}) {
+    const [selectedRowData, setSelectedRowData] = useState({
+        name: null, 
+        duration: null, 
+        type: null, 
+        area: null, 
+        modality: null
+    });
 
     useEffect(() => {
-        setSelectedRowData(selectedRow);
-    }, [selectedRow]);
-
+        selectedCourse && setSelectedRowData(selectedCourse);
+    }, [selectedCourse]);
 
     function handleOkClick() {
         handleEditCourse(selectedRowData);
@@ -45,29 +50,29 @@ export default function ModalEditCourse({visible, setVisible, selectedRow, handl
                     <CloseOutlined style={{ fontSize: '22px', cursor: 'pointer' }} onClick={() => setVisible(prev => !prev)}/>
                 </Header>
                 <Body>
-                    <Form layout='horizontal' labelCol={{ span: 5 }}>
-                        <Form.Item label="Curso" style={{gridArea: 'name'}}>
+                    <Form layout='horizontal' labelCol={{ span: 6 }}>
+                        <Form.Item label="CURSO" style={{gridArea: 'name'}}>
                             <Input 
                                 placeholder="Nome do curso" 
-                                value={selectedRowData.courseName}
-                                onChange={(e) => setSelectedRowData({...selectedRowData, courseName: e.target.value})}
+                                value={selectedRowData.name}
+                                onChange={(e) => setSelectedRowData({...selectedRowData, name: e.target.value})}
                             />
                         </Form.Item>
-                        <Form.Item label="Duração" style={{gridArea: 'duration'}}>
+                        <Form.Item label="DURAÇÃO" style={{gridArea: 'duration'}}>
                             <InputNumber
                                 min={0} 
                                 placeholder="Duração"
-                                value={selectedRowData.courseDuration}
-                                onChange={(e) => setSelectedRowData({...selectedRowData, courseDuration: e})}
+                                value={selectedRowData.duration}
+                                onChange={(e) => setSelectedRowData({...selectedRowData, duration: e})}
                             />
                         </Form.Item>
-                        <Form.Item label='Área' style={{gridArea: 'area'}}>
+                        <Form.Item label='ÁREA' style={{gridArea: 'area'}}>
                             <Select
                                 showSearch
                                 placeholder="Buscar"
                                 optionFilterProp="children"
-                                value={selectedRowData.courseArea}
-                                onChange={(e) => setSelectedRowData({...selectedRowData, courseArea: e})}
+                                value={selectedRowData.area}
+                                onChange={(e) => setSelectedRowData({...selectedRowData, area: e})}
                             >
                             {
                                 coursesAreasMock.map((e, i) => {
@@ -76,13 +81,13 @@ export default function ModalEditCourse({visible, setVisible, selectedRow, handl
                             }
                             </Select>
                         </Form.Item>
-                        <Form.Item label='Tipo' style={{gridArea: 'type'}}>
+                        <Form.Item label='TIPO' style={{gridArea: 'type'}}>
                             <Select
                                 showSearch
                                 placeholder="Buscar"
                                 optionFilterProp="children"
-                                value={selectedRowData.courseType}
-                                onChange={(e) => setSelectedRowData({...selectedRowData, courseType: e})}
+                                value={selectedRowData.type}
+                                onChange={(e) => setSelectedRowData({...selectedRowData, type: e})}
                             >
                             {
                                 coursesTypesMock.map((e, i) => {
@@ -91,12 +96,12 @@ export default function ModalEditCourse({visible, setVisible, selectedRow, handl
                             }
                             </Select>
                         </Form.Item>
-                        <Form.Item label='Modalidade' style={{gridArea: 'modality'}}>
+                        <Form.Item label='MODALIDADE' style={{gridArea: 'modality'}}>
                             <Select
                                 showSearch
                                 placeholder="Buscar"
                                 optionFilterProp="children"
-                                value={selectedRowData.courseModality}
+                                value={selectedRowData.modality}
                                 onChange={(e) => setSelectedRowData({...selectedRowData, courseModality: e})}
                             >
                             {
@@ -110,7 +115,7 @@ export default function ModalEditCourse({visible, setVisible, selectedRow, handl
                 </Body>
                 <Footer>
                     <Button onClick={() => setVisible(prev => !prev)}>Cancelar</Button>
-                    <Button onClick={() => handleOkClick()} type='primary'>OK</Button>
+                    <Button onClick={handleOkClick} type='primary'>OK</Button>
                 </Footer>
             </MainContent>
         </MainContainer>

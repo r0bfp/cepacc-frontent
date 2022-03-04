@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Input, InputNumber, Select, Button } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
 
-import { Body, Footer, Header, MainContainer, MainContent, Title } from "./style";
+import { Body, Footer, Header, BlackBackground, MainContent, Title } from "./style";
 
 const coursesTypesMock = [
     '2° Licenciatura',
@@ -27,11 +27,11 @@ const coursesModalitiesMock = [
 
 export default function ModalAddCourse({visible, setVisible, handleAddNewCourse}) {
     const [ newCourse, setNewCourse ] = useState({
-        courseName: '',
-        courseDuration: '',
-        courseType: '',
-        courseArea: '',
-        courseModality: '',
+        name: '',
+        duration: '',
+        type: '',
+        area: '',
+        modality: '',
     });
 
     function handleOkClick() {
@@ -40,26 +40,26 @@ export default function ModalAddCourse({visible, setVisible, handleAddNewCourse}
     }
 
     return (
-        <MainContainer visible={visible}>
+        <BlackBackground visible={visible}>
             <MainContent>
                 <Header>
                     <Title>Adicionar Curso</Title>
                     <CloseOutlined style={{ fontSize: '22px', cursor: 'pointer' }} onClick={() => setVisible(prev => !prev)}/>
                 </Header>
                 <Body>
-                    <Form layout='horizontal' labelCol={{ span: 5 }}>
-                        <Form.Item label="Curso" style={{gridArea: 'name'}}>
-                            <Input placeholder="Nome do curso" onChange={(e) => setNewCourse({...newCourse, courseName: e.target.value})}/>
+                    <Form labelCol={{ span: 6 }}>
+                        <Form.Item label="CURSO">
+                            <Input placeholder="Nome do curso" onChange={(e) => setNewCourse({...newCourse, name: e.target.value})}/>
                         </Form.Item>
-                        <Form.Item label="Duração" style={{gridArea: 'duration'}}>
-                            <InputNumber min={0} placeholder="Duração" onChange={(e) => setNewCourse({...newCourse, courseDuration: e})}/>
+                        <Form.Item label="DURAÇÃO">
+                            <InputNumber min={0} placeholder="Duração" onChange={(e) => setNewCourse({...newCourse, duration: e})}/>
                         </Form.Item>
-                        <Form.Item label='Área' style={{gridArea: 'area'}}>
+                        <Form.Item label='ÁREA'>
                             <Select
                                 showSearch
                                 placeholder="Buscar"
                                 optionFilterProp="children"
-                                onChange={(e) => setNewCourse({...newCourse, courseArea: e})}
+                                onChange={(e) => setNewCourse({...newCourse, area: e})}
                             >
                             {
                                 coursesAreasMock.map((e, i) => {
@@ -68,12 +68,12 @@ export default function ModalAddCourse({visible, setVisible, handleAddNewCourse}
                             }
                             </Select>
                         </Form.Item>
-                        <Form.Item label='Tipo' style={{gridArea: 'type'}}>
+                        <Form.Item label='TIPO'>
                             <Select
                                 showSearch
                                 placeholder="Buscar"
                                 optionFilterProp="children"
-                                onChange={(e) => setNewCourse({...newCourse, courseType: e})}
+                                onChange={(e) => setNewCourse({...newCourse, type: e})}
                             >
                             {
                                 coursesTypesMock.map((e, i) => {
@@ -82,12 +82,12 @@ export default function ModalAddCourse({visible, setVisible, handleAddNewCourse}
                             }
                             </Select>
                         </Form.Item>
-                        <Form.Item label='Modalidade' style={{gridArea: 'modality'}}>
+                        <Form.Item label='MODALIDADE'>
                             <Select
                                 showSearch
                                 placeholder="Buscar"
                                 optionFilterProp="children"
-                                onChange={(e) => setNewCourse({...newCourse, courseModality: e})}
+                                onChange={(e) => setNewCourse({...newCourse, modality: e})}
                             >
                             {
                                 coursesModalitiesMock.map((e, i) => {
@@ -103,6 +103,6 @@ export default function ModalAddCourse({visible, setVisible, handleAddNewCourse}
                     <Button onClick={() => handleOkClick()} type='primary'>OK</Button>
                 </Footer>
             </MainContent>
-        </MainContainer>
+        </BlackBackground>
     )
 }
