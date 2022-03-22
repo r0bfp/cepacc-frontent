@@ -1,4 +1,6 @@
 import React from "react";
+import { useState, useEffect } from "react";
+import CountUp from "react-countup";
 
 import { 
     DifferentialContainer, 
@@ -13,6 +15,15 @@ import {
 } from "./style";
 
 export default function WhyUs() {
+    const [ counterStart, setCounterStart] = useState(false);
+
+    useEffect(() => {
+        window.onscroll = () => {
+            window.pageYOffset > 1450 &&
+            setCounterStart(true);
+        }
+    }, []);
+
     return (
         <MainContainer>
             <LeftSquare/>
@@ -20,15 +31,42 @@ export default function WhyUs() {
                 <Title>Por que escolher a CEPACC?</Title>
                 <Differentials>
                     <DifferentialContainer>
-                        <DifferentialTitle>+ de 80</DifferentialTitle>
+                        <DifferentialTitle
+                            >+ de <CountUp end={400} >
+                            {({ countUpRef, start }) => (
+                                <>
+                                    <span ref={countUpRef} />
+                                    {counterStart && start()}
+                                </>
+                            )}
+                            </CountUp>
+                        </DifferentialTitle>
                         <DifferentialSubTitle>Cursos</DifferentialSubTitle>
                     </DifferentialContainer>
                     <DifferentialContainer>
-                        <DifferentialTitle>+ de 200</DifferentialTitle>
+                        <DifferentialTitle
+                            >+ de <CountUp end={150} >
+                            {({ countUpRef, start }) => (
+                                <>
+                                    <span ref={countUpRef} />
+                                    {counterStart && start()}
+                                </>
+                            )}
+                            </CountUp>
+                        </DifferentialTitle>
                         <DifferentialSubTitle>Alunos</DifferentialSubTitle>
                     </DifferentialContainer>
                     <DifferentialContainer>
-                        <DifferentialTitle>+ de 10</DifferentialTitle>
+                        <DifferentialTitle
+                            >+ de <CountUp end={7} >
+                            {({ countUpRef, start }) => (
+                                <>
+                                    <span ref={countUpRef} />
+                                    {counterStart && start()}
+                                </>
+                            )}
+                            </CountUp>
+                        </DifferentialTitle>
                         <DifferentialSubTitle>Anos de Tradição</DifferentialSubTitle>
                     </DifferentialContainer>
                 </Differentials>
