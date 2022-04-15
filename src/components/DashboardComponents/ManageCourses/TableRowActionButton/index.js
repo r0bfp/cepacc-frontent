@@ -14,14 +14,14 @@ export default function TableRowActionButton({setModalRemoveCourseVisible, setMo
 
     const dropdownMenu = (
         <Menu>
-            <Menu.Item key="0">
-                <DropdownButtonContainer onClick={() => setModalEditCourseVisible(prev => !prev)}>
+            <Menu.Item key="0" onClick={() => setModalEditCourseVisible(prev => !prev)}>
+                <DropdownButtonContainer>
                     <BiEdit color={'#002756'}/>
                     <span style={{ color: '#002756' }}>Editar</span>
                 </DropdownButtonContainer>
             </Menu.Item>
-            <Menu.Item danger key="1">
-                <DropdownButtonContainer onClick={() => setModalRemoveCourseVisible(prev => !prev)}>
+            <Menu.Item danger key="1" onClick={() => setModalRemoveCourseVisible(prev => !prev)}>
+                <DropdownButtonContainer>
                     <BiTrash/>
                     <span>Remover</span>
                 </DropdownButtonContainer>
