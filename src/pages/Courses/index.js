@@ -11,8 +11,8 @@ import { FiltersContainer, MainContainer, TableContainer, Title } from "./style"
 
 export default function Courses(){
     const [courseDetailShowing, setCourseDetailShowing] = useState(false);
+    const [rawCourses, setRawCourses] = useState([]);
     const [courses, setCourses] = useState([]);
-    const [filteredCourses, setFilteredCourses] = useState([]);
 
 
     useEffect(() => {
@@ -21,7 +21,7 @@ export default function Courses(){
             const courses = rawToStandardizedCourses(response.data);
 
             setCourses(courses);
-            setFilteredCourses(courses);
+            setRawCourses(courses);
         }
 
         fetchData();
@@ -59,19 +59,35 @@ export default function Courses(){
         return coursesBy;
     }
 
+    const handleFilters = {
+        searchTerm: (filters) => {
+            const filteredCourses = {}
+    
+            Object.keys(rawCourses).map((courseType) => {
+                const courseList = rawCourses[courseType].filter(course => course.name.toLowerCase().includes(filters.searchTerm))
+    
+                if(!!courseList.length){
+                    filteredCourses[courseType] = courseList
+                }
+            });
+
+            setCourses(filteredCourses);
+        }
+    }
+
 
     return (
         <MainContainer>
             <FiltersContainer>
-                <Filters handleFilters={() => {}}/>
+                <Filters handleFilters={handleFilters}/>
             </FiltersContainer>
             {
-                Object.keys(filteredCourses).map((courseType, index) => (
+                Object.keys(courses).map((courseType, index) => (
                     <TableContainer key={index}>
                         <Title>{courseType}</Title>
                         <Table 
                             tableHead={tableHead} 
-                            tableData={filteredCourses[courseType]}
+                            tableData={courses[courseType]}
                             // handleRowClick={handleTableRowClick}
                         />
                     </TableContainer>
