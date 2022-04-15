@@ -19,7 +19,7 @@ export default function WhyUs() {
 
     useEffect(() => {
         window.onscroll = () => {
-            window.pageYOffset > 1450 &&
+            window.pageYOffset > 1500 &&
             setCounterStart(true);
         }
     }, []);
