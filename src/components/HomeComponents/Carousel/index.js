@@ -1,21 +1,24 @@
 import React from "react";
-import { Carousel as AntdCarousel, Typography} from "antd";
+import { Carousel as AntdCarousel} from "antd";
 
-import { MainContainer, CarouselImageContainer, MessageContainer, CarouselContainer } from "./style";
-import banner from "../../../assets/carousel/banner teste1.png";
-import banner2 from "../../../assets/carousel/banner teste2.png";
+import { MainContainer, CarouselImageContainer, CarouselContainer } from "./style";
+import { importAllImages } from "../../../tools";
+
 
 export default function Carousel() {
+    const banners = importAllImages(require.context('../../../assets/carousel', false, /\.(png|jpe?g|svg)$/));
+
     return (
         <MainContainer>
             <CarouselContainer>
                 <AntdCarousel autoplay>
-                    <CarouselImageContainer>
-                        <img src={banner}/>
-                    </CarouselImageContainer>
-                    <CarouselImageContainer>
-                        <img src={banner2}/>
-                    </CarouselImageContainer>
+                    {
+                        Object.values(banners).map((banner, index) => (
+                            <CarouselImageContainer key={index}>
+                                <img src={banner.default} alt='banner'/>
+                            </CarouselImageContainer>
+                        ))
+                    }
                 </AntdCarousel>
             </CarouselContainer>
         </MainContainer>
