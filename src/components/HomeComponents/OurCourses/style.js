@@ -61,4 +61,8 @@ export const ReadMoreButtonContainer = styled.div`
     width: 100%;
     position: absolute;
     bottom: 40px;
+
+    button{
+        border-radius: 15px;
+    }
 `;
