@@ -20,7 +20,7 @@ export const ContentContainer = styled.div`
     padding: 20px;
 
     label {
-        color: #b3b9c4;
+        color: #002756;
         font-size: 12px;
         font-weight: 600;
     }

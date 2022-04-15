@@ -1,11 +1,11 @@
-import { Button, Dropdown } from "antd";
+import { Button } from "antd";
 import React, { useEffect, useState } from "react";
 
 import TableRowActionButton from "./TableRowActionButton";
 import ModalAddCourse from "./Modals/AddCourse";
 import ModalRemoveCourse from "./Modals/RemoveCourse";
 import ModalEditCourse from "./Modals/EditCourse";
-import Table from "./Table";
+import Table from "../../CommonComponents/Table";
 import { AddCourseContainer, MainContainer, Title } from "./style";
 
 
@@ -15,22 +15,23 @@ export default function ManageCourses() {
     const [modalEditCourseVisible, setModalEditCourseVisible] = useState(false);
     const [selectedRowIndex, setSelectedRowIndex] = useState(null);
 
-    const [courses, setCourses] = useState([
-        {name: 'curso', duration: 12, type: 'graduacao', area: 'saude', modality: 'ead'},
-        {name: 'curso a', duration: 12, type: 'graduacao', area: 'saude', modality: 'ead'},
-        {name: 'curso c', duration: 12, type: 'graduacao', area: 'saude', modality: 'ead'},
-    ]);
+    const [courses, setCourses] = useState([]);
 
+    const coursesMock = [
+        {name: 'xxx', duration: 11, type: 'graduacao', area: 'saude', modality: 'ead'},
+        {name: 'asda', duration: 3, type: 'graduacao', area: 'saude', modality: 'ead'},
+        {name: 'b', duration: 45, type: 'graduacao', area: 'saude', modality: 'ead'},
+    ]
     const tableHead = ['Nome', 'Duração', 'Tipo', 'Área', 'Modalidade', 'Ação'];
 
     useEffect(() => {
-        setCourses(courses.map(course => ({
+        setCourses(coursesMock.map(course => ({
             ...course,
             render: <TableRowActionButton 
                 setModalRemoveCourseVisible={setModalRemoveCourseVisible}
                 setModalEditCourseVisible={setModalEditCourseVisible}
                 setSelectedRowIndex={setSelectedRowIndex}
-            /> 
+            />
         })));
     }, []);
 
@@ -62,7 +63,7 @@ export default function ManageCourses() {
     return (
         <MainContainer>
             <Title>Cursos</Title>
-            <Table tableHead={tableHead} tableData={courses}/>
+            {courses && <Table tableHead={tableHead} tableData={courses}/>}
             <AddCourseContainer>
                 <Button 
                     type="primary" 
