@@ -1,4 +1,4 @@
-import React, { useRef, useState }  from "react";
+import React, { useRef, useState, useEffect }  from "react";
 import { Button, Checkbox, Slider } from "antd";
 import { FiSearch, FiFilter }       from "react-icons/fi";
 import { GrFormClose }              from "react-icons/gr";
@@ -25,18 +25,18 @@ import {
     ModalFilterTitle,
 } from "./style";
 
-export default function Filters({handleFilters}) {
+export default function Filters({handleSearchTerm, handleFilters}) {
     const searchInputRef = useRef(null);
 
     const [ searchFocus, setSearchFocus ] = useState(false);
     const [ filtersIsOpen, setFiltersIsOpen ] = useState(true);
     const [ appliedFilters, setAppliedFilters ] = useState([]);
+    const [ searchTerm, setSearchTerm ] = useState('');
     const [ filters, setFilters ] = useState({
-        searchTerm: '',
-        courseArea: [],
-        courseDuration: [],
-        courseModality: [],
-        courseType: []
+        area: [],
+        type: [],
+        duration: [360, 1420],
+        modality: []
     });
 
     function handleRemoveFilter(filter) {
@@ -56,14 +56,13 @@ export default function Filters({handleFilters}) {
         searchInputRef.current.value = "";
         searchInputRef.current.blur();
 
-        filters.searchTerm && handleFilters.searchTerm(filters);
-
-        setAppliedFilters(prev => ([...prev, filters.searchTerm]))
+        searchTerm && handleSearchTerm(searchTerm);
     }
 
     function handleFiltersModalOpen() {
         setFiltersIsOpen(prev => !prev);
 
+        // used to prevent scroll on modal show
         if(filtersIsOpen){
             document.body.style.overflow = 'unset';
         }else{
@@ -71,8 +70,25 @@ export default function Filters({handleFilters}) {
         }
     }
 
-    function handleChangeFilters(filter) {
-        console.log(filters);
+    function handleSubmitFilters() {
+        handleFilters(filters);
+    }
+
+    // DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG 
+    // useEffect(() => {
+    //     console.log(filters)
+    // }, [filters]);
+
+    function handleChangeFilters(whichFilter, filterValue, checkboxStatus) {
+        let currentFilter = filters[whichFilter];
+
+        if(!checkboxStatus){
+            currentFilter = currentFilter.filter(e => e !== filterValue);
+        }else{
+            currentFilter.push(filterValue);
+        }
+
+        setFilters(prev => ({...prev, [whichFilter]: currentFilter}));
     }
 
     const durationSliderMarks = {
@@ -131,7 +147,7 @@ export default function Filters({handleFilters}) {
                                 <ModalFilterContainer>
                                     {
                                         checkBoxesFilters.area.map((element, index) => (
-                                            <Checkbox key={index} onChange={handleChangeFilters}>{element}</Checkbox>
+                                            <Checkbox key={index} onChange={(e) => handleChangeFilters('area', e.target.value, e.target.checked)} value={element}>{element}</Checkbox>
                                         ))
                                     }
                                 </ModalFilterContainer>
@@ -141,7 +157,7 @@ export default function Filters({handleFilters}) {
                                 <ModalFilterContainer>
                                     {
                                         checkBoxesFilters.tipo.map((element, index) => (
-                                            <Checkbox key={index}>{element}</Checkbox>
+                                            <Checkbox key={index} onChange={(e) => handleChangeFilters('type', e.target.value, e.target.checked)} value={element}>{element}</Checkbox>
                                         ))
                                     }
                                 </ModalFilterContainer>
@@ -157,6 +173,7 @@ export default function Filters({handleFilters}) {
                                         defaultValue={[360, 1420]}
                                         min={360}
                                         max={1420}
+                                        onChange={(value) => {setFilters(prev => ({...prev, duration: value}))}}
                                     />
                                 </ModalFilterContainer>
                             </ModalFilter>
@@ -165,7 +182,7 @@ export default function Filters({handleFilters}) {
                                 <ModalFilterContainer>
                                     {
                                         checkBoxesFilters.modalidade.map((element, index) => (
-                                            <Checkbox key={index}>{element}</Checkbox>
+                                            <Checkbox key={index} onChange={(e) => handleChangeFilters('modality', e.target.value, e.target.checked)} value={element}>{element}</Checkbox>
                                         ))
                                     }
                                 </ModalFilterContainer>
@@ -175,7 +192,7 @@ export default function Filters({handleFilters}) {
                             <a onClick={() => {}}>Limpar Filtros</a>
                             <div>
                                 <Button onClick={handleFiltersModalOpen}>Cancelar</Button>
-                                <Button onClick={() => {}} type='primary'>OK</Button>
+                                <Button onClick={handleSubmitFilters} type='primary'>OK</Button>
                             </div>
                         </ModalFooter>
                     </FiltersModalContent>
@@ -193,7 +210,7 @@ export default function Filters({handleFilters}) {
                         <SearchInput 
                             placeholder="Buscar um curso" 
                             ref={searchInputRef} onBlur={() => setSearchFocus(false)}
-                            onChange={event => setFilters({ ...filters, searchTerm: event.target.value })}
+                            onChange={event => setSearchTerm(event.target.value)}
                         />
                     </form>
                 </SearchBox>
