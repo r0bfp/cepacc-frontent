@@ -59,27 +59,44 @@ export default function Courses(){
         return coursesBy;
     }
 
-    const handleFilters = {
-        searchTerm: (filters) => {
-            const filteredCourses = {}
-    
-            Object.keys(rawCourses).map((courseType) => {
-                const courseList = rawCourses[courseType].filter(course => course.name.toLowerCase().includes(filters.searchTerm))
-    
-                if(!!courseList.length){
-                    filteredCourses[courseType] = courseList
-                }
+    function handleSearchTerm(searchTerm) {
+        const filteredCourses = {}
+
+        setCourses(rawCourses);
+
+        Object.keys(rawCourses).map((courseType) => {
+            const courseList = rawCourses[courseType].filter((course) => { 
+                return course.name.toLowerCase().includes(searchTerm);
             });
 
-            setCourses(filteredCourses);
-        }
+            if(!!courseList.length){
+                filteredCourses[courseType] = courseList;
+            }
+        });
+
+        setCourses(filteredCourses);
     }
 
+    function handleFilters(filters) {
+        console.log(filters);
+
+        const filteredCourses = {}
+
+        Object.keys(rawCourses).map((courseType) => {
+            const courseList = rawCourses[courseType].filter((course) => { 
+                
+                return course.name.toLowerCase().includes(searchTerm);
+            });
+        });
+    }
 
     return (
         <MainContainer>
             <FiltersContainer>
-                <Filters handleFilters={handleFilters}/>
+                <Filters 
+                    handleSearchTerm={handleSearchTerm} 
+                    handleFilters={handleFilters}
+                />
             </FiltersContainer>
             {
                 Object.keys(courses).map((courseType, index) => (
