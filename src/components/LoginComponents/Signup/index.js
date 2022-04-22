@@ -16,7 +16,7 @@ import {
 } from "./style";
 
 export default function Signup() {
-    const coursesColors = [
+    const areaColors = [
         {
             color: '#ef476f',
             courseType: '2 Licenciatura',
@@ -54,7 +54,7 @@ export default function Signup() {
             </SubTitleContainer>
             <CoursesContainer>
                 {
-                    coursesColors.map((e) => {
+                    areaColors.map((e) => {
                         return (
                             <CourseContainer color={e.color}>
                                 <CourseTypeTitle>{e.courseType}</CourseTypeTitle>

@@ -19,11 +19,13 @@ export const AppColors = {
     primary: 'rgb(1, 70, 140)',
     primaryText: '#093366',
     secondary: 'rgb(204, 160, 51)',
-    coursesColors: {
-        '2° Licenciatura': '#ef476f',
-        'Pós-Graduação': '#48cae4',
-        'Cursos de Extensão': '#06d6a0',
-        'Reforço Escolar': '#fd9e02',
-        'Cursos Preparatórios': '#126782'
+    areaColors: {
+        'Negócios': '#ef476f',
+        'Saúde': '#48cae4',
+        'Educação': '#06d6a0',
+        'Tecnologia': '#6998AB',
+        'Direito': '#750550',
+        'Ciências Humanas': '#519259',
+        'Teologia': '#D4B499'
     }
 }

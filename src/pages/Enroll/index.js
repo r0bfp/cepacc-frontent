@@ -7,7 +7,7 @@ import SignUpForm     from "../../components/EnrollComponents/SignUpForm";
 import CourseForm     from "../../components/EnrollComponents/CourseForm";
 import PersonalForm   from "../../components/EnrollComponents/PersonalForm";
 import Congratulation from "../../components/EnrollComponents/Congratulations";
-import banner         from "../../assets/banner.png"
+import banner         from "../../assets/banner.jpeg"
 
 export default function Enroll(){
     const [steps, setSteps] = useState([

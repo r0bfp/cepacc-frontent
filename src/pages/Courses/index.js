@@ -77,17 +77,55 @@ export default function Courses(){
         setCourses(filteredCourses);
     }
 
-    function handleFilters(filters) {
-        console.log(filters);
+    const filtersHandlers = {
+        type: (types, filteredCourses) => {
+            const rawCoursesCopy = rawCourses
 
-        const filteredCourses = {}
+            // check if arrays are equals
+            if(types.length === Object.keys(rawCoursesCopy).length){
+                if(types.every(item => Object.keys(rawCoursesCopy).includes(item))){
+                    filteredCourses = rawCoursesCopy
+                }
+            }
+            
+            if(!types.length){
+                filteredCourses = rawCoursesCopy
+            }
 
-        Object.keys(rawCourses).map((courseType) => {
-            const courseList = rawCourses[courseType].filter((course) => { 
-                
-                return course.name.toLowerCase().includes(searchTerm);
-            });
-        });
+            Object.keys(rawCoursesCopy).map(courseType => {
+                if(types.includes(courseType)){
+                    filteredCourses[courseType] = rawCoursesCopy[courseType]
+                }
+            })
+
+            return filteredCourses;
+        },
+        area: (areas, filteredCourses) => {
+            const rawCoursesCopy = rawCourses
+
+            if(!areas.length){
+                Object.keys(filteredCourses).map(courseType => {
+                })
+            }
+
+            Object.keys(filteredCourses).map(courseType => {
+                const courses = filteredCourses[courseType].filter(course => {
+                    return areas.includes(course.area) && course
+                })
+
+                filteredCourses[courseType] = courses
+            })
+
+            return filteredCourses
+        }
+    }
+
+    function filtersApply(filters) {
+        let filteredCourses = {}
+
+        filteredCourses = filtersHandlers.type(filters.type, filteredCourses);
+        // filteredCourses = filtersHandlers.area(filters.area, filteredCourses);
+        setCourses(filteredCourses);
     }
 
     return (
@@ -95,7 +133,7 @@ export default function Courses(){
             <FiltersContainer>
                 <Filters 
                     handleSearchTerm={handleSearchTerm} 
-                    handleFilters={handleFilters}
+                    filtersApply={filtersApply}
                 />
             </FiltersContainer>
             {

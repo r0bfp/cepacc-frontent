@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect }  from "react";
+import React, { useRef, useState }  from "react";
 import { Button, Checkbox, Slider } from "antd";
 import { FiSearch, FiFilter }       from "react-icons/fi";
 import { GrFormClose }              from "react-icons/gr";
@@ -25,11 +25,11 @@ import {
     ModalFilterTitle,
 } from "./style";
 
-export default function Filters({handleSearchTerm, handleFilters}) {
+export default function Filters({handleSearchTerm, filtersApply}) {
     const searchInputRef = useRef(null);
 
     const [ searchFocus, setSearchFocus ] = useState(false);
-    const [ filtersIsOpen, setFiltersIsOpen ] = useState(true);
+    const [ filtersIsOpen, setFiltersIsOpen ] = useState(false);
     const [ appliedFilters, setAppliedFilters ] = useState([]);
     const [ searchTerm, setSearchTerm ] = useState('');
     const [ filters, setFilters ] = useState({
@@ -71,7 +71,8 @@ export default function Filters({handleSearchTerm, handleFilters}) {
     }
 
     function handleSubmitFilters() {
-        handleFilters(filters);
+        filtersApply(filters);
+        handleFiltersModalOpen();
     }
 
     // DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG 
@@ -134,70 +135,67 @@ export default function Filters({handleSearchTerm, handleFilters}) {
 
     return (
         <MainContainer>
-            {
-                filtersIsOpen &&
-                <FiltersModal>
-                    <FiltersModalContent>
-                        <ModalHeader>
-                            <ModalTitle>Filtros</ModalTitle>
-                        </ModalHeader>
-                        <ModalBody>
-                            <ModalFilter>
-                                <ModalFilterTitle>Área</ModalFilterTitle>
-                                <ModalFilterContainer>
-                                    {
-                                        checkBoxesFilters.area.map((element, index) => (
-                                            <Checkbox key={index} onChange={(e) => handleChangeFilters('area', e.target.value, e.target.checked)} value={element}>{element}</Checkbox>
-                                        ))
-                                    }
-                                </ModalFilterContainer>
-                            </ModalFilter>
-                            <ModalFilter>
-                                <ModalFilterTitle>Tipo</ModalFilterTitle>
-                                <ModalFilterContainer>
-                                    {
-                                        checkBoxesFilters.tipo.map((element, index) => (
-                                            <Checkbox key={index} onChange={(e) => handleChangeFilters('type', e.target.value, e.target.checked)} value={element}>{element}</Checkbox>
-                                        ))
-                                    }
-                                </ModalFilterContainer>
-                            </ModalFilter>
-                            <ModalFilter>
-                                <ModalFilterTitle>Duração</ModalFilterTitle>
-                                <ModalFilterContainer style={{padding: '0 10px'}}>
-                                    <Slider 
-                                        range 
-                                        tooltipVisible={true}
-                                        step={null} 
-                                        marks={durationSliderMarks}
-                                        defaultValue={[360, 1420]}
-                                        min={360}
-                                        max={1420}
-                                        onChange={(value) => {setFilters(prev => ({...prev, duration: value}))}}
-                                    />
-                                </ModalFilterContainer>
-                            </ModalFilter>
-                            <ModalFilter>
-                                <ModalFilterTitle>Modalidade</ModalFilterTitle>
-                                <ModalFilterContainer>
-                                    {
-                                        checkBoxesFilters.modalidade.map((element, index) => (
-                                            <Checkbox key={index} onChange={(e) => handleChangeFilters('modality', e.target.value, e.target.checked)} value={element}>{element}</Checkbox>
-                                        ))
-                                    }
-                                </ModalFilterContainer>
-                            </ModalFilter>
-                        </ModalBody>
-                        <ModalFooter>
-                            <a onClick={() => {}}>Limpar Filtros</a>
-                            <div>
-                                <Button onClick={handleFiltersModalOpen}>Cancelar</Button>
-                                <Button onClick={handleSubmitFilters} type='primary'>OK</Button>
-                            </div>
-                        </ModalFooter>
-                    </FiltersModalContent>
-                </FiltersModal>
-            }
+            <FiltersModal isOpen={filtersIsOpen}>
+                <FiltersModalContent>
+                    <ModalHeader>
+                        <ModalTitle>Filtros</ModalTitle>
+                    </ModalHeader>
+                    <ModalBody>
+                        {/* <ModalFilter>
+                            <ModalFilterTitle>Área</ModalFilterTitle>
+                            <ModalFilterContainer>
+                                {
+                                    checkBoxesFilters.area.map((element, index) => (
+                                        <Checkbox key={index} onChange={(e) => handleChangeFilters('area', e.target.value, e.target.checked)} value={element}>{element}</Checkbox>
+                                    ))
+                                }
+                            </ModalFilterContainer>
+                        </ModalFilter> */}
+                        <ModalFilter>
+                            <ModalFilterTitle>Tipo</ModalFilterTitle>
+                            <ModalFilterContainer>
+                                {
+                                    checkBoxesFilters.tipo.map((element, index) => (
+                                        <Checkbox key={index} onChange={(e) => handleChangeFilters('type', e.target.value, e.target.checked)} value={element}>{element}</Checkbox>
+                                    ))
+                                }
+                            </ModalFilterContainer>
+                        </ModalFilter>
+                        {/* <ModalFilter>
+                            <ModalFilterTitle>Duração</ModalFilterTitle>
+                            <ModalFilterContainer style={{padding: '0 10px'}}>
+                                <Slider 
+                                    range 
+                                    tooltipVisible={true}
+                                    step={null} 
+                                    marks={durationSliderMarks}
+                                    defaultValue={[360, 1420]}
+                                    min={360}
+                                    max={1420}
+                                    onChange={(value) => {setFilters(prev => ({...prev, duration: value}))}}
+                                />
+                            </ModalFilterContainer>
+                        </ModalFilter>
+                        <ModalFilter>
+                            <ModalFilterTitle>Modalidade</ModalFilterTitle>
+                            <ModalFilterContainer>
+                                {
+                                    checkBoxesFilters.modalidade.map((element, index) => (
+                                        <Checkbox key={index} onChange={(e) => handleChangeFilters('modality', e.target.value, e.target.checked)} value={element}>{element}</Checkbox>
+                                    ))
+                                }
+                            </ModalFilterContainer>
+                        </ModalFilter> */}
+                    </ModalBody>
+                    <ModalFooter>
+                        <a onClick={() => {}}>Limpar Filtros</a>
+                        <div>
+                            <Button onClick={handleFiltersModalOpen}>Cancelar</Button>
+                            <Button onClick={handleSubmitFilters} type='primary'>OK</Button>
+                        </div>
+                    </ModalFooter>
+                </FiltersModalContent>
+            </FiltersModal>
             <MainContent>
                 <SearchBox isFocus={searchFocus} onClick={handleSearchClick}>
                     <FiSearch 

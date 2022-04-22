@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { MainContainer, Message } from "./style";
+import { ButtonContainer, MainContainer, MainContent, Message } from "./style";
 
 
 export default function ContactUs() {
@@ -9,7 +9,12 @@ export default function ContactUs() {
     return (
         pathname !== '/area-do-aluno/dashboard' &&
         <MainContainer>
-            <Message>FALE CONOSCO</Message>
+            {/* <MainContent>
+                
+            </MainContent> */}
+            <ButtonContainer onClick={() => window.open("https://api.whatsapp.com/send?phone=5511933555753", "_blank")}>
+                <Message>FALE CONOSCO</Message>
+            </ButtonContainer>
         </MainContainer>
     )
 }

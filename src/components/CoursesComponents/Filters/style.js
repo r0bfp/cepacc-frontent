@@ -138,9 +138,9 @@ export const FiltersModal = styled.div`
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.4);
-    display: flex;
     justify-content: center;
     align-items: center;
+    display: ${ props => props.isOpen ? 'flex' : 'none'};
 `;
 
 export const FiltersModalContent = styled.div`

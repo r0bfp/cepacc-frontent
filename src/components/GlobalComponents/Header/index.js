@@ -37,12 +37,12 @@ export default function Header() {
             link: '/cursos',
             selected: false
         },
-        {
-            title: 'Área do Aluno',
-            icon: (<UserOutlined/>),
-            link: '/area-do-aluno/login',
-            selected: false
-        },
+        // {
+        //     title: 'Área do Aluno',
+        //     icon: (<UserOutlined/>),
+        //     link: '/area-do-aluno/login',
+        //     selected: false
+        // },
     ]);
 
     useEffect(() => {
